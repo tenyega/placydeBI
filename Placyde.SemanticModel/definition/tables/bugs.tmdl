@@ -1,0 +1,83 @@
+table bugs
+	lineageTag: a64ad945-87c9-4140-8d82-7dceeb1c49d8
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 67228ad9-4741-4838-bdeb-bf2ab4fdd5fb
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_user
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c8fcd49-9c12-485c-8e67-48cb8300af42
+		summarizeBy: none
+		sourceColumn: id_user
+
+		annotation SummarizationSetBy = Automatic
+
+	column theme
+		dataType: string
+		lineageTag: f6b8aaa6-d042-4d92-8ea7-338b76959bcf
+		summarizeBy: none
+		sourceColumn: theme
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: da949cc6-c5a9-4be0-98e8-f8ac77643786
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column result
+		dataType: string
+		lineageTag: a7b96ba6-a9ff-4c6e-8c08-5666109c1306
+		summarizeBy: none
+		sourceColumn: result
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 199526a7-c442-44c4-bcfa-25a311fa360e
+		summarizeBy: none
+		sourceColumn: created_at
+
+		variation Variation
+			isDefault
+			relationship: e89916be-74ce-404b-b23c-2352d27d34c4
+			defaultHierarchy: LocalDateTable_f3de4767-788c-4cbf-b01b-913d95e5defa.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column solved_at
+		dataType: string
+		lineageTag: 22c46be2-9a2a-4e24-be7a-0a5b6bc180cd
+		summarizeBy: none
+		sourceColumn: solved_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bugs = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\bugs.csv"),[Delimiter=";", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"id_user", Int64.Type}, {"theme", type text}, {"description", type text}, {"result", type text}, {"created_at", type date}, {"solved_at", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

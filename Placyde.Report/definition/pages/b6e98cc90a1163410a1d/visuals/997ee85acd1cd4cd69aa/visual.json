@@ -1,0 +1,82 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "997ee85acd1cd4cd69aa",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 360,
+    "width": 627.14285714285722,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mc_main_courante"
+                    }
+                  },
+                  "Property": "heure_appel_pc"
+                }
+              },
+              "queryRef": "mc_main_courante.heure_appel_pc",
+              "nativeQueryRef": "Nombre d'appel PC",
+              "active": true,
+              "displayName": "Nombre d'appel PC"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "mc_main_courante"
+                        }
+                      },
+                      "Property": "date_prise_service"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(mc_main_courante.date_prise_service)",
+              "nativeQueryRef": "Nombre d'intervention",
+              "displayName": "Nombre d'intervention"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "mc_main_courante"
+                  }
+                },
+                "Property": "heure_appel_pc"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

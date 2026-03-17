@@ -1,0 +1,34 @@
+table themes_bugs
+	lineageTag: 72094f36-cfa4-4667-bfd4-6de1d832751a
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: c31812c7-d315-4257-b331-82587dca9f89
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 6d776c31-c2d1-431e-864d-89680108230e
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition themes_bugs = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\themes_bugs.csv"),[Delimiter=";", Columns=2, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"name", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

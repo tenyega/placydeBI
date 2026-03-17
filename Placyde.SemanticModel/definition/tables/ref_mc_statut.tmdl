@@ -1,0 +1,34 @@
+table ref_mc_statut
+	lineageTag: fd629bce-e080-403a-9ffd-11620cb6ce45
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b3b5c40-c2e6-4c6a-addc-190465a07519
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: 7665c366-9c4b-435f-8cb7-1ddaad645c36
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ref_mc_statut = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\ref_mc_statut.csv"),[Delimiter=";", Columns=2, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

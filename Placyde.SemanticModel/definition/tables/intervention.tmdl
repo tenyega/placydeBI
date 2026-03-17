@@ -1,0 +1,238 @@
+table intervention
+	lineageTag: ea348e9e-8b11-4eb6-a6da-eed8797135e5
+
+	measure 'Avg Réactivité' = AVERAGE('intervention'[réactivité agent (min)])
+		lineageTag: a260854a-6825-4ce4-acc0-5ed8f011ba57
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'High Reactivity %' =
+			
+			DIVIDE(
+			    COUNTROWS(
+			        FILTER(
+			            'intervention',
+			            'intervention'[réactivité agent (min)] > 30
+			        )
+			    ),
+			    COUNTROWS('intervention'),
+			    0
+			)
+		lineageTag: 204d1243-3bcb-4bf7-b266-8651bc26f88b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9843c406-0da0-4c40-99dd-aed445d0cf78
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_contact_pc
+		dataType: string
+		lineageTag: 9c13b73d-eda9-492c-8a86-f6e4a5447dea
+		summarizeBy: none
+		sourceColumn: heure_contact_pc
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_fiche_alarme
+		dataType: string
+		lineageTag: f99fa5cd-eb0c-4da3-ba80-5af061a65ec5
+		summarizeBy: none
+		sourceColumn: num_fiche_alarme
+
+		annotation SummarizationSetBy = Automatic
+
+	column ligne_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b48ec425-feeb-4893-b09c-be2733537a0b
+		summarizeBy: sum
+		sourceColumn: ligne_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 67e4a244-0f1a-463e-8739-bd06327c85f9
+		summarizeBy: sum
+		sourceColumn: station_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column utilisation_vhl
+		dataType: string
+		lineageTag: be53d855-02d9-48b7-a642-753f9fd12507
+		summarizeBy: none
+		sourceColumn: utilisation_vhl
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_appel_sur_place
+		dataType: string
+		lineageTag: 9e77c6ff-47ea-42fa-a920-de1755ca3148
+		summarizeBy: none
+		sourceColumn: heure_appel_sur_place
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_localisation_objet_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 304e8bed-ef6d-4065-b57a-f0d080a39c70
+		summarizeBy: sum
+		sourceColumn: ref_localisation_objet_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_autorisation_pc
+		dataType: string
+		lineageTag: a6adeecd-e3ce-4e2d-a1ba-9eed7a6d2620
+		summarizeBy: none
+		sourceColumn: heure_autorisation_pc
+
+		annotation SummarizationSetBy = Automatic
+
+	column olfaction
+		dataType: string
+		lineageTag: 1cc0ed5b-3ddb-46f1-8a19-850100da7e10
+		summarizeBy: none
+		sourceColumn: olfaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_type_colis_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3189d33b-63be-41f0-87e9-5abd1bdf9360
+		summarizeBy: sum
+		sourceColumn: ref_type_colis_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_annulation
+		dataType: string
+		lineageTag: 8bd53181-119d-4415-b46a-dd0a36bf17f9
+		summarizeBy: none
+		sourceColumn: heure_annulation
+
+		annotation SummarizationSetBy = Automatic
+
+	column annulation
+		dataType: string
+		lineageTag: d0f86eee-f743-4f85-92fa-f58600c6e075
+		summarizeBy: none
+		sourceColumn: annulation
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_cause_annul_inter_id
+		dataType: string
+		lineageTag: 48f19a49-58ca-420c-b316-c156b4f043cc
+		summarizeBy: none
+		sourceColumn: ref_cause_annul_inter_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_resultat_olfaction_id
+		dataType: string
+		lineageTag: 3cb4cde0-35cc-40ef-82c1-d3b1c282e875
+		summarizeBy: none
+		sourceColumn: ref_resultat_olfaction_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_fin
+		dataType: string
+		lineageTag: 4b34f9a4-e382-4c81-becc-12bfbf7587a5
+		summarizeBy: none
+		sourceColumn: heure_fin
+
+		annotation SummarizationSetBy = Automatic
+
+	column commentaire
+		dataType: string
+		lineageTag: eb9ede9a-c232-41f3-ab7f-c0699c7d99d5
+		summarizeBy: none
+		sourceColumn: commentaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column mc_main_courante_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ae6dad8-8443-4b57-ae2e-01cd11f0b0bc
+		summarizeBy: none
+		sourceColumn: mc_main_courante_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Durée intervention' = ```
+			
+			-- 1. On force la conversion en nombre. Si c'est "NULL", IFERROR renvoie du vide (BLANK)
+			VAR HeureSurPlace = IFERROR(VALUE('intervention'[heure_appel_sur_place]), BLANK())
+			VAR HeureContact = IFERROR(VALUE('intervention'[heure_contact_pc]), BLANK())
+			VAR HeureFin = IFERROR(VALUE('intervention'[heure_fin]), BLANK())
+			
+			-- 2. On choisit l'heure de début selon votre priorité
+			VAR Debut = IF(ISBLANK(HeureSurPlace), HeureContact, HeureSurPlace)
+			
+			-- 3. On calcule l'écart uniquement si on a un début et une fin
+			RETURN
+			IF(
+			    ISBLANK(Debut) || ISBLANK(HeureFin), 
+			    0,
+			    VAR Ecart = ROUND((HeureFin - Debut) * 1440, 0)
+			    RETURN IF(Ecart < 0, 0, Ecart)
+			)
+			```
+		lineageTag: f9a8f403-b092-41e5-a8be-9c863ebd4186
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'réactivité agent (min)' = ```
+			
+			-- 1. On convertit les heures en nombres, gère le texte "NULL"
+			VAR Debut = IFERROR(VALUE('intervention'[heure_contact_pc]), BLANK())
+			VAR Arrivee = IFERROR(VALUE('intervention'[heure_appel_sur_place]), BLANK())
+			
+			-- 2. On vérifie que les DEUX valeurs existent
+			RETURN
+			IF(
+			    ISBLANK(Debut) || ISBLANK(Arrivee), 
+			    BLANK(), -- Renvoie un vrai vide si une donnée manque
+			    VAR Ecart = ROUND((Arrivee - Debut) * 1440, 0)
+			    RETURN IF(Ecart < 0, 0, Ecart)
+			)
+			```
+		lineageTag: 8a25bc87-a38e-470f-8b81-1d48c52c2793
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition intervention = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\DB done\intervention.csv"),[Delimiter=";", Columns=18, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"heure_contact_pc", type time}, {"num_fiche_alarme", type text}, {"ligne_id", Int64.Type}, {"station_id", Int64.Type}, {"utilisation_vhl", type text}, {"heure_appel_sur_place", type text}, {"ref_localisation_objet_id", Int64.Type}, {"heure_autorisation_pc", type text}, {"olfaction", type text}, {"ref_type_colis_id", Int64.Type}, {"heure_annulation", type text}, {"annulation", type text}, {"ref_cause_annul_inter_id", type text}, {"ref_resultat_olfaction_id", type text}, {"heure_fin", type time}, {"commentaire", type text}, {"mc_main_courante_id", Int64.Type}}),
+				    #"Espaces supprimés" = Table.TransformColumns(Table.TransformColumnTypes(#"Type modifié", {{"heure_contact_pc", type text}, {"heure_fin", type text}}, "fr-FR"),{{"heure_contact_pc", Text.Trim, type text}, {"heure_appel_sur_place", Text.Trim, type text}, {"heure_fin", Text.Trim, type text}}),
+				    #"Espaces supprimés1" = Table.TransformColumns(#"Espaces supprimés",{{"heure_appel_sur_place", Text.Trim, type text}})
+				in
+				    #"Espaces supprimés1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

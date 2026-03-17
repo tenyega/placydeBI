@@ -1,0 +1,133 @@
+table pointage
+	lineageTag: f6bd4ab0-4fb7-4794-a0d7-2bf70103ab62
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: a3bbdfcd-2ea1-4d0f-9848-a584fe2d5609
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 003a802a-61f3-4f91-b058-9033331ae10c
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: 137acdf4-8543-4adf-b058-f3fa0d1f47b4
+			defaultHierarchy: LocalDateTable_50fd81d6-d3cd-47a2-8196-ab0b5e699010.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column jour
+		dataType: string
+		lineageTag: 38f4d371-ba4e-41e0-ab46-3cc202eb90fe
+		summarizeBy: none
+		sourceColumn: jour
+
+		annotation SummarizationSetBy = Automatic
+
+	column heures_totales
+		dataType: string
+		lineageTag: 453567d6-8006-4026-b48d-93a4f06b2789
+		summarizeBy: none
+		sourceColumn: heures_totales
+
+		annotation SummarizationSetBy = Automatic
+
+	column heures_de_jour
+		dataType: string
+		lineageTag: afb6f6b4-83cf-41bb-a5b1-86f7d137938e
+		summarizeBy: none
+		sourceColumn: heures_de_jour
+
+		annotation SummarizationSetBy = Automatic
+
+	column heures_de_nuit
+		dataType: string
+		lineageTag: 776b4af5-09b6-44ba-a707-c2b25acf87db
+		summarizeBy: none
+		sourceColumn: heures_de_nuit
+
+		annotation SummarizationSetBy = Automatic
+
+	column nuit_dimanche
+		dataType: string
+		lineageTag: 02ae4005-8641-4215-8e95-a9f7593efcdb
+		summarizeBy: none
+		sourceColumn: nuit_dimanche
+
+		annotation SummarizationSetBy = Automatic
+
+	column jour_dimanche
+		dataType: string
+		lineageTag: 6e318968-6d3e-4e5a-956c-2282410e2ed7
+		summarizeBy: none
+		sourceColumn: jour_dimanche
+
+		annotation SummarizationSetBy = Automatic
+
+	column jour_ferie
+		dataType: string
+		lineageTag: f19b0dc2-3b37-4f00-8706-24ee5417bb26
+		summarizeBy: none
+		sourceColumn: jour_ferie
+
+		annotation SummarizationSetBy = Automatic
+
+	column nuit_ferie
+		dataType: string
+		lineageTag: fd5d4c64-5a33-426f-914d-979b4748c9a0
+		summarizeBy: none
+		sourceColumn: nuit_ferie
+
+		annotation SummarizationSetBy = Automatic
+
+	column vhl
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e07c2f1-9494-4e38-908c-e5e1e89ece98
+		summarizeBy: sum
+		sourceColumn: vhl
+
+		annotation SummarizationSetBy = Automatic
+
+	column mc_main_courante_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0da04ede-0020-40b9-a74b-161200864abd
+		summarizeBy: none
+		sourceColumn: mc_main_courante_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column statut
+		dataType: int64
+		formatString: 0
+		lineageTag: a8bc5ae9-4e27-4308-92d3-d59631ecc7bc
+		summarizeBy: sum
+		sourceColumn: statut
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pointage = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\pointage.csv"),[Delimiter=";", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"date", type date}, {"jour", type text}, {"heures_totales", type text}, {"heures_de_jour", type text}, {"heures_de_nuit", type text}, {"nuit_dimanche", type text}, {"jour_dimanche", type text}, {"jour_ferie", type text}, {"nuit_ferie", type text}, {"vhl", Int64.Type}, {"mc_main_courante_id", Int64.Type}, {"statut", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

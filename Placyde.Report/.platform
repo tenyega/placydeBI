@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Placyde"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a88e9aad-d0bf-4ccc-bb58-7e8b106c53b8"
+  }
+}

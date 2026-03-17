@@ -1,0 +1,44 @@
+table fact_penalites_liste
+	lineageTag: f694fef0-9777-415e-b4d1-eef2fc117e79
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 91bbf6a4-8985-4e4b-9d80-eae90dc4b7d1
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cout_penalites
+		dataType: int64
+		formatString: 0
+		lineageTag: 065ad227-9bfa-496d-82a9-fcfd0f5ddec8
+		summarizeBy: sum
+		sourceColumn: cout_penalites
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_type_penalite_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e48f5eef-4d8f-42b3-a35f-152dc8fb87e7
+		summarizeBy: none
+		sourceColumn: ref_type_penalite_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_penalites_liste = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\fact_penalites_liste.csv"),[Delimiter=";", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"cout_penalites", Int64.Type}, {"ref_type_penalite_id", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

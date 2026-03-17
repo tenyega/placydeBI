@@ -1,0 +1,171 @@
+table intervenant
+	lineageTag: 56bd87e4-a54e-40d8-9f5b-48835d06bda9
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: e183b9f8-0b62-4a9e-b1d8-2b3db45020fe
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column indicatif
+		dataType: string
+		lineageTag: 18df8be8-4954-40d3-8de6-0a1acbfaac53
+		summarizeBy: none
+		sourceColumn: indicatif
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_entreprise
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b2b325f-596c-440c-a1d7-3f373ba22e2e
+		summarizeBy: sum
+		sourceColumn: id_entreprise
+
+		annotation SummarizationSetBy = Automatic
+
+	column attachement_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 64d6b63e-8ef7-4323-83b7-543fbffaf151
+		summarizeBy: sum
+		sourceColumn: attachement_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column indicatif_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e57d926-94a3-4e4a-93ad-d7ffca517e0e
+		summarizeBy: sum
+		sourceColumn: indicatif_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column phone
+		dataType: int64
+		formatString: 0
+		lineageTag: 22b8ac61-069a-43cd-b944-b22b6ad240bd
+		summarizeBy: sum
+		sourceColumn: phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column tetra1
+		dataType: string
+		lineageTag: 424ce808-1737-4827-ae3b-5f41989a1110
+		summarizeBy: none
+		sourceColumn: tetra1
+
+		annotation SummarizationSetBy = Automatic
+
+	column tetra2
+		dataType: string
+		lineageTag: 76edbc77-11ad-4863-af24-a699c2a604cc
+		summarizeBy: none
+		sourceColumn: tetra2
+
+		annotation SummarizationSetBy = Automatic
+
+	column horaire_debut
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 166ff12f-236d-4545-9ef3-23e24511bbcb
+		summarizeBy: none
+		sourceColumn: horaire_debut
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column horaire_fin
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 5cb48745-69bc-4e46-aad8-a2ef99f108d0
+		summarizeBy: none
+		sourceColumn: horaire_fin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column wef_debut
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 14df9200-97bb-4d72-9327-426b1f2bc963
+		summarizeBy: none
+		sourceColumn: wef_debut
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column wef_fin
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 5312e884-0286-4678-a6bc-1f58d87321a5
+		summarizeBy: none
+		sourceColumn: wef_fin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column ref_moment_journee_id
+		dataType: string
+		lineageTag: 840ae119-1958-467a-85d2-3eefa8b4680d
+		summarizeBy: none
+		sourceColumn: ref_moment_journee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column jonction
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: a6c94efc-051f-4951-ac2f-f0af77fe3a8f
+		summarizeBy: none
+		sourceColumn: jonction
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column created_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5fd21563-7eaf-4f16-8912-6909342b98fa
+		summarizeBy: none
+		sourceColumn: created_at
+
+		variation Variation
+			isDefault
+			relationship: 4624693c-187c-4d28-ad6f-3e27b396700e
+			defaultHierarchy: LocalDateTable_ee66248a-f4bd-40d7-a823-86d9130085fb.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at
+		dataType: string
+		lineageTag: da913edd-41ff-452f-9147-b7e2b567177c
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition intervenant = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\intervenant.csv"),[Delimiter=";", Columns=16, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"indicatif", type text}, {"id_entreprise", Int64.Type}, {"attachement_id", Int64.Type}, {"indicatif_id", Int64.Type}, {"phone", Int64.Type}, {"tetra1", type text}, {"tetra2", type text}, {"horaire_debut", type time}, {"horaire_fin", type time}, {"wef_debut", type time}, {"wef_fin", type time}, {"ref_moment_journee_id", type text}, {"jonction", type time}, {"created_at", type datetime}, {"updated_at", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

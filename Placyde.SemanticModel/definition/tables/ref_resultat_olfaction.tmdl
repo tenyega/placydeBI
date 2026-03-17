@@ -1,0 +1,34 @@
+table ref_resultat_olfaction
+	lineageTag: 167a7b57-d1be-4f33-a3b9-03370961e1d7
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: a47b32c5-93ea-4fb6-8bad-9977176b76a0
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: 1f55431b-4187-48e4-8bce-10834c7b3420
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ref_resultat_olfaction = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\ref_resultat_olfaction.csv"),[Delimiter=";", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

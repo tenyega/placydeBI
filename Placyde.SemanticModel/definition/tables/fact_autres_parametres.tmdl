@@ -1,0 +1,71 @@
+table fact_autres_parametres
+	lineageTag: 23d9643c-2729-4791-969d-410070b1b94f
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 384087e1-38d3-4cff-a21a-02aa07496e4c
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_taxe_supp
+		dataType: string
+		lineageTag: b03c8f60-5308-47a3-83e4-e50fb5c1db24
+		summarizeBy: none
+		sourceColumn: nom_taxe_supp
+
+		annotation SummarizationSetBy = Automatic
+
+	column montant_taxe_supp
+		dataType: int64
+		formatString: 0
+		lineageTag: f105f0c3-0b29-4486-ba0e-568bd6bb2495
+		summarizeBy: sum
+		sourceColumn: montant_taxe_supp
+
+		annotation SummarizationSetBy = Automatic
+
+	column montant_budget_annuel_idfm
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ce45f95-bd39-4b94-8b8d-72ce2d9d9be7
+		summarizeBy: sum
+		sourceColumn: montant_budget_annuel_idfm
+
+		annotation SummarizationSetBy = Automatic
+
+	column mail_contact_vhl_indispo
+		dataType: string
+		lineageTag: 83e64387-8632-44e4-9572-34a7871c78cc
+		summarizeBy: none
+		sourceColumn: mail_contact_vhl_indispo
+
+		annotation SummarizationSetBy = Automatic
+
+	column horaire_tarif_nuit
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: e32e3010-329d-4411-83d2-f2942b5389d0
+		summarizeBy: none
+		sourceColumn: horaire_tarif_nuit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition fact_autres_parametres = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\fact_autres_parametres.csv"),[Delimiter=";", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom_taxe_supp", type text}, {"montant_taxe_supp", Int64.Type}, {"montant_budget_annuel_idfm", Int64.Type}, {"mail_contact_vhl_indispo", type text}, {"horaire_tarif_nuit", type time}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

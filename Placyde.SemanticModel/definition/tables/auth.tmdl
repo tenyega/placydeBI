@@ -1,0 +1,74 @@
+table auth
+	lineageTag: 7884217b-0858-4e1e-9786-badc2c9cafed
+
+	measure 'Average Reactivity' = AVERAGE('intervention'[réactivité agent (min)])
+		lineageTag: 59cc1b04-e503-4f64-b253-2fed08171d73
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Duration (min)' = AVERAGE('intervention'[Durée intervention]) / 60
+		lineageTag: e76c1f65-dddf-42cc-9c26-9772c8f40fc2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Mesure
+		lineageTag: c0498427-5ca5-41fd-809e-237776e043e9
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: b5e1ffea-560d-46cd-956a-99f79688aa65
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 05c02c64-1910-4d73-a4c2-e6e79f8b04ad
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column admin
+		dataType: string
+		lineageTag: 409dfad3-a0fc-46f4-a3e2-b0909bb2e5d1
+		summarizeBy: none
+		sourceColumn: admin
+
+		annotation SummarizationSetBy = Automatic
+
+	column user
+		dataType: string
+		lineageTag: c6c7e5b9-5d55-436d-bb85-0b9e742eb3de
+		summarizeBy: none
+		sourceColumn: user
+
+		annotation SummarizationSetBy = Automatic
+
+	column guest
+		dataType: string
+		lineageTag: cfbbbbdf-55c2-4d32-bad3-311a1b793f1c
+		summarizeBy: none
+		sourceColumn: guest
+
+		annotation SummarizationSetBy = Automatic
+
+	partition auth = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\DB done\auth.csv"),[Delimiter=";", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"user_id", Int64.Type}, {"admin", type text}, {"user", type text}, {"guest", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

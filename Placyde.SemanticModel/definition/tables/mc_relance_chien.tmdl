@@ -1,0 +1,64 @@
+table mc_relance_chien
+	lineageTag: a1aee7b6-7de5-4af6-b638-6bec6e7b7772
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cb197b4-0e0e-4ed9-a547-1db1c6106789
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 6476ba7a-d608-4437-88a1-2fd8c842caad
+		summarizeBy: none
+		sourceColumn: heure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column ref_matiere_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 23b4bc9c-032e-42d0-ad7b-bcee59cba1d4
+		summarizeBy: sum
+		sourceColumn: ref_matiere_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_resultat_test_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 245e792b-7db9-42e6-a266-12de3a3b85ad
+		summarizeBy: sum
+		sourceColumn: ref_resultat_test_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column mc_main_courante_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a9c0af0e-92bb-4f33-b3c1-39a1b787943f
+		summarizeBy: none
+		sourceColumn: mc_main_courante_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition mc_relance_chien = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\mc_relance_chien.csv"),[Delimiter=";", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"heure", type time}, {"ref_matiere_id", Int64.Type}, {"ref_resultat_test_id", Int64.Type}, {"mc_main_courante_id", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

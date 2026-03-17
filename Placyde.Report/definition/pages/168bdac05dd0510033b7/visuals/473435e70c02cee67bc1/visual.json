@@ -1,0 +1,265 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "473435e70c02cee67bc1",
+  "position": {
+    "x": 675.71428571428578,
+    "y": 0,
+    "z": 2000,
+    "height": 720,
+    "width": 604.28571428571433,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "🛑 ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Analyse des Fins de Missions et Annulations",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Ce panneau permet de comprendre les causes d'interruption des interventions et d'analyser la qualité de la donnée sur les années précédentes.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "📅",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " Historique des Fins Anticipées",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Le graphique en anneau montre que la quasi-totalité des enregistrements de \"fin anticipée\" (plus de ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "99%",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ") datent de l'année ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "2021",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ".",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "On observe un volume résiduel (1 seule occurrence) pour l'année ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "2023",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ", ce qui pourrait indiquer soit une amélioration des processus de fin de mission, soit un changement dans la manière de saisir ces données.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "❌ ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Causes d'Annulation des Interventions",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Le graphique de zone met en lumière les motifs récurrents qui empêchent la finalisation d'une mission cynotechnique :",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Les causes principales incluent l'",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Absence de bagage",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " (levée de doute sans objet), les ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Bagages inaccessibles",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ", ou encore les ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Prises en main par l'Exploitant ou la Police",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ".",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Le volume d'annulation reste stable à environ ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "840 interventions",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ", ce qui montre que la présence d'un colis suspect ne nécessite pas systématiquement une olfaction si le bagage est récupéré par son propriétaire ou pris en charge par un autre service avant l'arrivée du chien.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

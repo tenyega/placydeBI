@@ -1,0 +1,66 @@
+table lignes
+	lineageTag: 79b719c8-c2f0-4b20-9c6a-23b13e505dfb
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 39a02904-4c96-4e27-954a-7638f9a4a7ff
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ligne
+		dataType: string
+		lineageTag: 3bf51799-fb81-472b-8740-4b8a290a5944
+		summarizeBy: none
+		sourceColumn: ligne
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 22e87e1b-5a47-4184-bbb2-18604e0e4a33
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 1336c388-6c8c-4b4f-8d1c-9b6cf3873726
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column active
+		dataType: string
+		lineageTag: 0358f6c8-005e-4cb5-aaee-e4349dd8a47e
+		summarizeBy: none
+		sourceColumn: active
+
+		annotation SummarizationSetBy = Automatic
+
+	column logo
+		dataType: string
+		lineageTag: 01706a4e-32c7-4e7b-8fef-5d759bf80bff
+		summarizeBy: none
+		sourceColumn: logo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition lignes = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\lignes.csv"),[Delimiter=";", Columns=6, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"ligne", type text}, {"description", type text}, {"type", type text}, {"active", type text}, {"logo", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

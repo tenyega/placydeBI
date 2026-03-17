@@ -1,0 +1,34 @@
+table ref_cause_depart_anticipe
+	lineageTag: ef27fa9c-b275-49ff-92cf-679235d6a380
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: b87a8eb1-551b-4e1e-bedc-66ef0ef5d1c5
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: 7b94d132-a056-4466-884e-5e0d8de3b993
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ref_cause_depart_anticipe = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\ref_cause_depart_anticipe.csv"),[Delimiter=";", Columns=2, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

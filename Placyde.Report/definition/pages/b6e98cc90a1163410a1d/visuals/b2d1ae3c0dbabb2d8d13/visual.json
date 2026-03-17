@@ -1,0 +1,333 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "b2d1ae3c0dbabb2d8d13",
+  "position": {
+    "x": 694.28571428571433,
+    "y": 0,
+    "z": 2000,
+    "height": 720,
+    "width": 564.28571428571433,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "🐕 ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Analyse Opérationnelle : ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Équipes Cynotechniques",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Cette section analyse la répartition temporelle des missions et la sollicitation des différentes unités canines.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "⏰ Pics d'Activité (Appels PC par Heure)",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Le graphique temporel révèle deux pics d'activité majeurs durant la journée :",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Matinée :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " Une forte concentration d'interventions entre ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "06:00 et 08:00",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ".",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Après-midi :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " Le pic le plus important de la journée se situe aux alentours de ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "14:00",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ", avec plus de ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "200 interventions",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " enregistrées sur ce créneau.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Le reste de la journée (entre 08:00 et 14:00, et après 17:00) affiche une activité très calme, ce qui permet la récupération des équipes.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "📊 ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Performance par Unité Maitre Chien",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "La répartition des interventions par chien montre un engagement équilibré des équipes de tête :",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Les chiens ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Pitt",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ", ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Smooky Burger",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ", ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Jig",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ", ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Octave",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " et ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Opus",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " sont les plus sollicités, avec chacun près de ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "60 interventions",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " à leur actif.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "On observe une dégressivité régulière du volume d'interventions, ce qui indique que la majorité des chiens du pool sont opérationnels et actifs, à l'exception du groupe \"Autre\" qui reste marginal.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

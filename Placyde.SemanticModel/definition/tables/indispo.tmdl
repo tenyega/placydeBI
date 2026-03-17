@@ -1,0 +1,115 @@
+table indispo
+	lineageTag: df7907a2-a891-4854-bb32-78f40f422985
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: fd332b0b-a03a-4fc9-ae98-7f4e17237f23
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_intervenant
+		dataType: int64
+		formatString: 0
+		lineageTag: 210da7a0-010b-4fab-8809-92549df6d828
+		summarizeBy: none
+		sourceColumn: id_intervenant
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_debut
+		dataType: string
+		lineageTag: 6b29c865-fa95-4dd9-8d21-42683b147d30
+		summarizeBy: none
+		sourceColumn: date_debut
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_fin
+		dataType: string
+		lineageTag: 4d191c2a-8ef3-488c-aae8-6fc3daf25a0c
+		summarizeBy: none
+		sourceColumn: date_fin
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_debut
+		dataType: string
+		lineageTag: 2ed470a6-d35d-4aad-9e5a-219e2966e53b
+		summarizeBy: none
+		sourceColumn: heure_debut
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_fin
+		dataType: string
+		lineageTag: 01bb31c7-16b4-4adb-bdc7-c43e2447c256
+		summarizeBy: none
+		sourceColumn: heure_fin
+
+		annotation SummarizationSetBy = Automatic
+
+	column dispo
+		dataType: string
+		lineageTag: b11a73b6-0099-4594-b143-39b7f30720f1
+		summarizeBy: none
+		sourceColumn: dispo
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_depart
+		dataType: string
+		lineageTag: 224222d2-daf6-4ea1-a83a-49ea2260121c
+		summarizeBy: none
+		sourceColumn: heure_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_station
+		dataType: string
+		lineageTag: 47055b0b-d0e3-417d-8947-209752063229
+		summarizeBy: none
+		sourceColumn: id_station
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_ligne
+		dataType: string
+		lineageTag: 6e6e9a96-f6ac-4fdd-bd5d-f53798c42da9
+		summarizeBy: none
+		sourceColumn: id_ligne
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_evenement
+		dataType: string
+		lineageTag: 62a81745-df1d-459c-83c9-c17f8b21197d
+		summarizeBy: none
+		sourceColumn: id_evenement
+
+		annotation SummarizationSetBy = Automatic
+
+	column remarque
+		dataType: string
+		lineageTag: 6e3c273e-28f2-4aaf-a923-ecf304b8e153
+		summarizeBy: none
+		sourceColumn: remarque
+
+		annotation SummarizationSetBy = Automatic
+
+	partition indispo = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\indispo.csv"),[Delimiter=";", Columns=12, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"id_intervenant", Int64.Type}, {"date_debut", type text}, {"date_fin", type text}, {"heure_debut", type text}, {"heure_fin", type text}, {"dispo", type text}, {"heure_depart", type text}, {"id_station", type text}, {"id_ligne", type text}, {"id_evenement", type text}, {"remarque", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

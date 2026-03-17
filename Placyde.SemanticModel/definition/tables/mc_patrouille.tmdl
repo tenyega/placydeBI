@@ -1,0 +1,81 @@
+table mc_patrouille
+	lineageTag: 4628c004-fbcb-4368-8d4e-4a1ac760af8b
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: d06821cc-0ec6-4f05-ace3-65f5bdc07d92
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_debut
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 2b94b38d-6013-4c09-8f35-0e05aef5ebbc
+		summarizeBy: none
+		sourceColumn: heure_debut
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column heure_fin
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 09ebd59a-8f22-4c2c-8fc6-b5ffb8ae1b06
+		summarizeBy: none
+		sourceColumn: heure_fin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column realise_seul
+		dataType: string
+		lineageTag: 5b58448a-e7dc-4a47-bcb3-c2be84f3ad65
+		summarizeBy: none
+		sourceColumn: realise_seul
+
+		annotation SummarizationSetBy = Automatic
+
+	column pause_synchro_gpsr
+		dataType: string
+		lineageTag: 96f5850d-451e-4e94-ab65-6d65a8433637
+		summarizeBy: none
+		sourceColumn: pause_synchro_gpsr
+
+		annotation SummarizationSetBy = Automatic
+
+	column commentaire
+		dataType: string
+		lineageTag: e98f6ff2-4767-4909-a5af-ed87098a3179
+		summarizeBy: none
+		sourceColumn: commentaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column mc_main_courante_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 37cc6b66-3e2f-49fd-9bb1-e0ebffe429b9
+		summarizeBy: none
+		sourceColumn: mc_main_courante_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition mc_patrouille = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\mc_patrouille.csv"),[Delimiter=";", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"heure_debut", type time}, {"heure_fin", type time}, {"realise_seul", type text}, {"pause_synchro_gpsr", type text}, {"commentaire", type text}, {"mc_main_courante_id", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

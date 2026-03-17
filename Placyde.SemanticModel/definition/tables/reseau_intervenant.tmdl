@@ -1,0 +1,166 @@
+table reseau_intervenant
+	lineageTag: 3f4a71bf-2d03-4b3b-864a-4c9b9ad661be
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: cd463b88-b6c4-492c-91ab-fd026aaae76a
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ligne
+		dataType: string
+		lineageTag: 9cc33a32-8d3c-40d6-8459-98738ea91f3f
+		summarizeBy: none
+		sourceColumn: ligne
+
+		annotation SummarizationSetBy = Automatic
+
+	column station
+		dataType: string
+		lineageTag: 7fb5e17d-4227-40e2-8537-c414c2b9170c
+		summarizeBy: none
+		sourceColumn: station
+
+		annotation SummarizationSetBy = Automatic
+
+	column priorite
+		dataType: int64
+		formatString: 0
+		lineageTag: 79beafdb-c4b5-4213-98f6-622349f700a1
+		summarizeBy: sum
+		sourceColumn: priorite
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_attachement
+		dataType: int64
+		formatString: 0
+		lineageTag: 21b3ac35-6546-4797-ab1c-fb553e819222
+		summarizeBy: sum
+		sourceColumn: id_attachement
+
+		annotation SummarizationSetBy = Automatic
+
+	column type_transport
+		dataType: string
+		lineageTag: 9b0feb04-1edf-4a1f-ac86-a78ec4dc4f76
+		summarizeBy: none
+		sourceColumn: type_transport
+
+		annotation SummarizationSetBy = Automatic
+
+	column trajet
+		dataType: string
+		lineageTag: 6b3b6c14-561e-445e-9ee5-b88995ed365d
+		summarizeBy: none
+		sourceColumn: trajet
+
+		annotation SummarizationSetBy = Automatic
+
+	column trajet2
+		dataType: string
+		lineageTag: c744c5e7-01ab-47c2-b507-fea3c73f0bc7
+		summarizeBy: none
+		sourceColumn: trajet2
+
+		annotation SummarizationSetBy = Automatic
+
+	column temps_trajet
+		dataType: int64
+		formatString: 0
+		lineageTag: 95bdc536-6da1-4ea4-b1c3-c5164064bc8e
+		summarizeBy: sum
+		sourceColumn: temps_trajet
+
+		annotation SummarizationSetBy = Automatic
+
+	column ligne_hs
+		dataType: string
+		lineageTag: 782c45f8-9cc2-4596-8a87-ce9561acf928
+		summarizeBy: none
+		sourceColumn: ligne_hs
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_emplacement_objet
+		dataType: int64
+		formatString: 0
+		lineageTag: e2d1895b-6381-4f7a-bc66-d8cf46038e15
+		summarizeBy: none
+		sourceColumn: id_emplacement_objet
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_station
+		dataType: int64
+		formatString: 0
+		lineageTag: ea981838-b477-4dbf-b874-4f16cc700b7d
+		summarizeBy: sum
+		sourceColumn: id_station
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_ligne
+		dataType: int64
+		formatString: 0
+		lineageTag: f05c22cf-5bb3-4af2-b503-3a75345a41af
+		summarizeBy: sum
+		sourceColumn: id_ligne
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at
+		dataType: string
+		lineageTag: beca9530-c4ee-479a-a4c0-7deb821d4d4d
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: string
+		lineageTag: 72122678-19b8-4246-bdef-e300735ff307
+		summarizeBy: none
+		sourceColumn: created_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column deleted_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cf09a841-920d-4525-a3e1-95a87580a3ce
+		summarizeBy: none
+		sourceColumn: deleted_at
+
+		variation Variation
+			isDefault
+			relationship: 1bfc5777-af93-427d-bf45-964ed842cf09
+			defaultHierarchy: LocalDateTable_8827073c-3a0e-4c39-9dca-a3e73f70466f.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column active
+		dataType: string
+		lineageTag: d64c9faa-4dcd-433e-8b5e-4101ab1b5221
+		summarizeBy: none
+		sourceColumn: active
+
+		annotation SummarizationSetBy = Automatic
+
+	partition reseau_intervenant = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\reseau_intervenant.csv"),[Delimiter=";", Columns=17, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"ligne", type text}, {"station", type text}, {"priorite", Int64.Type}, {"id_attachement", Int64.Type}, {"type_transport", type text}, {"trajet", type text}, {"trajet2", type text}, {"temps_trajet", Int64.Type}, {"ligne_hs", type text}, {"id_emplacement_objet", Int64.Type}, {"id_station", Int64.Type}, {"id_ligne", Int64.Type}, {"updated_at", type text}, {"created_at", type text}, {"deleted_at", type datetime}, {"active", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

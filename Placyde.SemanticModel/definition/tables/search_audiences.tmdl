@@ -1,0 +1,74 @@
+table search_audiences
+	lineageTag: 871e63e4-1f17-4637-b0bb-e7bb70d64abf
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 327918d9-a5bf-4954-97d0-b827c90c7997
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_user
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d3aabe5-ae48-4fb1-830a-3fa05b0855a2
+		summarizeBy: none
+		sourceColumn: id_user
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4ead0bb0-12d6-43df-b518-4ced43122680
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: c17bab17-53f1-488c-81bf-a8b3f578a8eb
+			defaultHierarchy: LocalDateTable_5cbfd85c-7894-4760-94c1-e30a7a2e07a3.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ligne
+		dataType: string
+		lineageTag: 5d89da24-a5fe-42e5-a8d1-763549e25d24
+		summarizeBy: none
+		sourceColumn: ligne
+
+		annotation SummarizationSetBy = Automatic
+
+	column station
+		dataType: string
+		lineageTag: 89faf764-0841-4433-96f3-c55722f09c35
+		summarizeBy: none
+		sourceColumn: station
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_emplacement_objet
+		dataType: int64
+		formatString: 0
+		lineageTag: 5523ab08-cee9-42a3-b3bf-4a9b81de5019
+		summarizeBy: none
+		sourceColumn: id_emplacement_objet
+
+		annotation SummarizationSetBy = Automatic
+
+	partition search_audiences = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\search_audiences.csv"),[Delimiter=";", Columns=6, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"id_user", Int64.Type}, {"date", type datetime}, {"ligne", type text}, {"station", type text}, {"id_emplacement_objet", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

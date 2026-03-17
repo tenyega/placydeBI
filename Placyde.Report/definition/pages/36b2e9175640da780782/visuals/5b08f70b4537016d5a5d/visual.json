@@ -1,0 +1,228 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "5b08f70b4537016d5a5d",
+  "position": {
+    "x": 640,
+    "y": 195,
+    "z": 1000,
+    "height": 497.5,
+    "width": 640,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Analyse du graphique – Réactivité d’agent et Heure d’appel par PC selon la durée d’intervention",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Le graphique met en évidence la relation entre la durée des interventions, la réactivité des agents et l’heure d’appel par PC.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "On observe que pour les ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "courtes durées d’intervention (0 à 10 minutes)",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": ", la ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "réactivité des agents est très variable et globalement élevée",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": ", avec des pics importants. Cela traduit une forte mobilisation ou des situations nécessitant une réponse rapide mais parfois irrégulière. De même, l’",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "heure d’appel par PC",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": " présente une forte dispersion sur ces courtes durées.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "À mesure que la ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "durée d’intervention augmente",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": ", la ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "réactivité des agents diminue nettement et se stabilise",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": " à un niveau faible. Cela suggère que les interventions longues sont mieux maîtrisées, avec des processus plus structurés et moins d’urgence immédiate.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Concernant l’",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "heure d’appel par PC",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": ", elle devient également ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "plus stable et faible",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": " pour les durées d’intervention plus longues, indiquant une moindre fréquence d’appels ou une meilleure gestion des sollicitations dans le temps.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Enfin, pour les ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "interventions très longues (au-delà de 60 minutes)",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": ", les deux indicateurs montrent une ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "stabilisation globale",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": ", avec une légère tendance à l’augmentation de la réactivité, pouvant refléter un suivi continu ou une complexité accrue des interventions.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

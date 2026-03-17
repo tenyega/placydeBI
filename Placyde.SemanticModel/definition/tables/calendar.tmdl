@@ -1,0 +1,77 @@
+table calendar
+	lineageTag: 6a90c201-ea5c-4f5e-b194-65b5aef8a5bb
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: d0a6bc7b-5773-4d62-803b-23d871eade15
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_entreprise
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d83f33a-4677-43f7-9d98-d8fa08c1dc10
+		summarizeBy: sum
+		sourceColumn: id_entreprise
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_attachement
+		dataType: int64
+		formatString: 0
+		lineageTag: 329e90f0-8153-43ec-aaec-9f050e6ed920
+		summarizeBy: sum
+		sourceColumn: id_attachement
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_indicatif
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c3f6257-8fa0-4af2-8530-00f5bc86b1df
+		summarizeBy: sum
+		sourceColumn: id_indicatif
+
+		annotation SummarizationSetBy = Automatic
+
+	column hours_week
+		dataType: string
+		lineageTag: 18602009-41e6-43ee-865b-3e08a5533355
+		summarizeBy: none
+		sourceColumn: hours_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column hours_week_end
+		dataType: string
+		lineageTag: ef7aef17-51e9-4fb7-851a-d427a5c3c1ef
+		summarizeBy: none
+		sourceColumn: hours_week_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column activated
+		dataType: string
+		lineageTag: 5bf51fff-b247-4669-8dbb-f2dd47a68680
+		summarizeBy: none
+		sourceColumn: activated
+
+		annotation SummarizationSetBy = Automatic
+
+	partition calendar = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\calendar.csv"),[Delimiter=";", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"id_entreprise", Int64.Type}, {"id_attachement", Int64.Type}, {"id_indicatif", Int64.Type}, {"hours_week", type text}, {"hours_week_end", type text}, {"activated", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,295 @@
+relationship e89916be-74ce-404b-b23c-2352d27d34c4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bugs.created_at
+	toColumn: LocalDateTable_f3de4767-788c-4cbf-b01b-913d95e5defa.Date
+
+relationship AutoDetected_4b8b105c-74fb-453e-869a-a0eeb4c69c1a
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: bugs.id_user
+	toColumn: auth.user_id
+
+relationship 137acdf4-8543-4adf-b058-f3fa0d1f47b4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pointage.date
+	toColumn: LocalDateTable_50fd81d6-d3cd-47a2-8196-ab0b5e699010.Date
+
+relationship AutoDetected_5d00baeb-6796-48dd-a27f-2dfb556ddf03
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: auth.user_id
+	toColumn: module_option.user_id
+
+relationship AutoDetected_38b93dfa-07ef-45b8-9c91-4e377bf1411f
+	fromColumn: mc_relance_chien.mc_main_courante_id
+	toColumn: pointage.mc_main_courante_id
+
+relationship 55e2faf9-9282-4c12-9c7d-b6bddaac60b8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: declare_indispo.date_debut
+	toColumn: LocalDateTable_f98c09ab-a316-4ea8-b851-5ac969235412.Date
+
+relationship 5cfe2189-b03d-4215-af10-7d2e76b9279e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ent_entrainement.debut
+	toColumn: LocalDateTable_504bc6e4-1bce-43c7-8869-e13bbfed599e.Date
+
+relationship 95c96504-77c1-4624-b058-df910dc180ad
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ent_entrainement.date_creation
+	toColumn: LocalDateTable_a119225e-27e2-4879-bb85-dfd235968aa8.Date
+
+relationship AutoDetected_79146f9b-7b44-4a4a-a381-83399d70be60
+	fromColumn: ent_entrainement.user_id
+	toColumn: module_option.user_id
+
+relationship AutoDetected_96b4e82b-8203-4d33-90e0-9dbef29c9665
+	fromColumn: ent_resultat_exercice.ent_exercice_id
+	toColumn: ent_exercice.id
+
+relationship d3c245ae-94b7-47a6-a0e3-c5a21d5d7970
+	joinOnDateBehavior: datePartOnly
+	fromColumn: evenements.date_debut
+	toColumn: LocalDateTable_9e32ee84-c518-4ec9-9028-52758059f281.Date
+
+relationship c71c3945-887c-481a-ab30-953bb376f6b4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: evenements.date_fin
+	toColumn: LocalDateTable_11c82c94-9836-4207-883c-902fdec621d5.Date
+
+relationship a8cafcb7-88ec-492a-9469-524d334bef18
+	joinOnDateBehavior: datePartOnly
+	fromColumn: evenements.created_at
+	toColumn: LocalDateTable_b44f6a2d-dfc4-4032-8efd-7c99a232e18f.Date
+
+relationship AutoDetected_39b2c350-43a0-40de-af8e-8ce765aa7c6e
+	fromColumn: declare_indispo.id_intervenant
+	toColumn: indispo.id_intervenant
+
+relationship AutoDetected_9d8dacab-37d0-4a45-92ce-c708a46d9a24
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: evenements.id_intervenant
+	toColumn: indispo.id_intervenant
+
+relationship 4624693c-187c-4d28-ad6f-3e27b396700e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: intervenant.created_at
+	toColumn: LocalDateTable_ee66248a-f4bd-40d7-a823-86d9130085fb.Date
+
+relationship AutoDetected_d2e1f761-5312-42bb-8b4c-088deceb6a58
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: intervenant.id
+	toColumn: indispo.id_intervenant
+
+relationship AutoDetected_b8033932-844b-4fbd-a13a-6ec18b29bb94
+	fromColumn: intervention.mc_main_courante_id
+	toColumn: pointage.mc_main_courante_id
+
+relationship 638a96c5-c033-4e71-8190-dbe2d8c14f13
+	joinOnDateBehavior: datePartOnly
+	fromColumn: list_attachement.created_at
+	toColumn: LocalDateTable_d5c4fb5f-5bae-49c7-b7a4-98b4dcbf8c18.Date
+
+relationship AutoDetected_d2a79ebc-cc59-4c15-b9f2-fbc81edf959b
+	fromColumn: ent_entrainement.list_attachement_id
+	toColumn: list_attachement.id
+
+relationship AutoDetected_04a54182-d938-4fdd-b063-5942e1b8d89b
+	fromColumn: fact_penalites_appliquees.list_attachement_id
+	toColumn: list_attachement.id
+
+relationship AutoDetected_7cb4dde5-2e27-4ea6-9c69-b96d4ca62b07
+	fromColumn: fact_tarifs_horaires.list_attachement_id
+	toColumn: list_attachement.id
+
+relationship 62314f2e-b8ba-49b4-993a-9ade7a279e5c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: log_evenements.date_debut
+	toColumn: LocalDateTable_b346097e-e948-4ee1-b66d-9547b898f229.Date
+
+relationship d1054655-de8b-4d53-b588-98c503fba420
+	joinOnDateBehavior: datePartOnly
+	fromColumn: log_evenements.date_fin
+	toColumn: LocalDateTable_1550c959-588d-4e23-983a-37d54a0a316c.Date
+
+relationship AutoDetected_67a33705-1918-4c0b-a40e-80ae29ef11f2
+	fromColumn: log_evenements.id_intervenant
+	toColumn: indispo.id_intervenant
+
+relationship AutoDetected_0377b3bb-f8df-4597-8322-7316ae682883
+	isActive: false
+	fromColumn: log_evenements.id_evenement
+	toColumn: evenements.id_evenement
+
+relationship 7b35d8ec-f2d2-48bc-81db-d474ce9305b0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: log_mission.date_debut
+	toColumn: LocalDateTable_bd2ad763-e4c6-42ca-9749-69f4c3d1bfcf.Date
+
+relationship 2f1b4d6f-4a6c-44c3-a655-a266616f6fc4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: log_mission.date_fin
+	toColumn: LocalDateTable_30cd1eb1-81c9-4d47-97bd-6eba80327ab7.Date
+
+relationship AutoDetected_bf74ec31-2425-48d9-8cf0-0f909a2c4c39
+	fromColumn: log_mission.id_intervenant
+	toColumn: indispo.id_intervenant
+
+relationship AutoDetected_e865ec7e-adcc-4ad9-8507-5a2002f66da8
+	fromColumn: mc_detente_chien.mc_main_courante_id
+	toColumn: pointage.mc_main_courante_id
+
+relationship AutoDetected_6ad73008-c8f5-49c2-a1af-4685ad4e4470
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: mc_fin_service_anticipee.mc_main_courante_id
+	toColumn: pointage.mc_main_courante_id
+
+relationship b6061abf-6ea0-4257-8397-cddff352654d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mc_main_courante.date_creation
+	toColumn: LocalDateTable_fa950c1c-162a-4e55-b910-554257d848a1.Date
+
+relationship 5a3df092-0320-4d5f-a70f-8db8d665161b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mc_main_courante.date_prise_service
+	toColumn: LocalDateTable_07d5b3af-b997-4d0b-82a6-b5f398a776fa.Date
+
+relationship AutoDetected_6aef226f-2263-4dae-bd16-5f79701b8468
+	fromColumn: mc_main_courante.user_id
+	toColumn: module_option.user_id
+
+relationship AutoDetected_921d5e51-7443-431a-a8e1-f4b3e157916e
+	fromColumn: mc_main_courante.chien_id
+	toColumn: chien.id
+
+relationship AutoDetected_217b0cfd-a507-41b6-8056-714a981a7c0b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: pointage.mc_main_courante_id
+	toColumn: mc_main_courante.id
+
+relationship AutoDetected_8db0884a-33b3-4a4d-adb0-a2d18d7498af
+	isActive: false
+	fromColumn: mc_relance_chien.mc_main_courante_id
+	toColumn: mc_main_courante.id
+
+relationship AutoDetected_38696abf-6b0c-434b-bd65-a1f5b159f028
+	isActive: false
+	fromColumn: intervention.mc_main_courante_id
+	toColumn: mc_main_courante.id
+
+relationship AutoDetected_01b17be5-2ab8-4e0f-8d75-e53c75f6e479
+	isActive: false
+	fromColumn: mc_detente_chien.mc_main_courante_id
+	toColumn: mc_main_courante.id
+
+relationship AutoDetected_3fb4dbba-3cb4-43c4-87cc-fc9da278a25a
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: mc_fin_service_anticipee.mc_main_courante_id
+	toColumn: mc_main_courante.id
+
+relationship AutoDetected_68ce4a53-5c71-4274-8352-1d338ff39a30
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: mc_patrouille.mc_main_courante_id
+	toColumn: mc_main_courante.id
+
+relationship 1bfc5777-af93-427d-bf45-964ed842cf09
+	joinOnDateBehavior: datePartOnly
+	fromColumn: reseau_intervenant.deleted_at
+	toColumn: LocalDateTable_8827073c-3a0e-4c39-9dca-a3e73f70466f.Date
+
+relationship AutoDetected_97d0eb36-c536-48f1-9922-df6e71eb9177
+	fromColumn: reseau_intervenant.ligne
+	toColumn: lignes.ligne
+
+relationship AutoDetected_cf11d240-2614-49bf-9914-ddccb367296a
+	fromColumn: reseau_intervenant.id_emplacement_objet
+	toColumn: emplacement_objet.id
+
+relationship AutoDetected_857f8232-de49-4e49-ac9d-a3d12a81b6b6
+	fromColumn: log_mission.id_reseau_intervenant
+	toColumn: reseau_intervenant.id
+
+relationship AutoDetected_0ad2f582-14ee-4608-a5fa-f02ed0f1febf
+	fromColumn: ent_resultat_exercice.ref_type_toucher_id
+	toColumn: ref_type_toucher.id
+
+relationship AutoDetected_c23d03a8-4cbd-4be0-b3d8-c184e98d5b99
+	fromColumn: ent_resultat_exercice.ref_type_resultat_exercice_id
+	toColumn: ref_type_resultat_exercice.id
+
+relationship AutoDetected_8e967a60-9756-42ec-91de-5b69c9634d88
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: ref_type_penalite.id
+	toColumn: fact_penalites_liste.ref_type_penalite_id
+
+relationship c1938c69-4770-4638-923e-7a8a60a7850b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: recover_pass.updated_at
+	toColumn: LocalDateTable_2368b093-275b-4cfa-b726-6dcc20d26608.Date
+
+relationship AutoDetected_9b9da11f-a302-48bf-bd0e-bcf9c9dfded5
+	fromColumn: recover_pass.user_id
+	toColumn: module_option.user_id
+
+relationship AutoDetected_248a5b3b-17a0-4eab-bbfb-3be3c6ba299d
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: mc_fin_service_anticipee.ref_cause_depart_anticipe_id
+	toColumn: ref_cause_depart_anticipe.id
+
+relationship AutoDetected_ff5999d4-0cb6-4983-9d94-2821798f10b8
+	fromColumn: ent_entrainement.ref_ent_etat_id
+	toColumn: ref_ent_etat.id
+
+relationship AutoDetected_035d6971-a760-4aa2-9437-25e6bad862eb
+	fromColumn: ent_entrainement.ref_ent_statut_id
+	toColumn: ref_ent_statut.id
+
+relationship AutoDetected_18984bfd-f2b4-4611-a9df-b62f93b2831b
+	fromColumn: mc_main_courante.ref_mc_statut_id
+	toColumn: ref_mc_statut.id
+
+relationship AutoDetected_8891dc7c-3afe-42e9-9407-c94693850f56
+	fromColumn: fact_tarifs_horaires.ref_moment_journee_id
+	toColumn: ref_moment_journee.id
+
+relationship AutoDetected_622c93c2-9e6e-4a43-aee0-f82f5fe1006e
+	fromColumn: fact_tarifs_horaires.ref_type_jour_travail_id
+	toColumn: ref_type_jour_travail.id
+
+relationship c17bab17-53f1-488c-81bf-a8b3f578a8eb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: search_audiences.date
+	toColumn: LocalDateTable_5cbfd85c-7894-4760-94c1-e30a7a2e07a3.Date
+
+relationship AutoDetected_faba3444-0b55-43e7-bdf3-4af607b20508
+	fromColumn: search_audiences.id_user
+	toColumn: auth.user_id
+
+relationship AutoDetected_f9082dcc-8d77-4e70-83c0-554b9cd51bc1
+	fromColumn: search_audiences.ligne
+	toColumn: lignes.ligne
+
+relationship AutoDetected_5018bacd-4544-4e21-98c5-98fe6d302c0b
+	fromColumn: search_audiences.id_emplacement_objet
+	toColumn: emplacement_objet.id
+
+relationship AutoDetected_49be3410-fbbf-4b4f-9cb7-d5fd9b840fa1
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: statut_environnement.id_liste_statut_environnement
+	toColumn: liste_statut_environnement.id
+
+relationship 21064aca-ba46-42c3-9533-f458e39b5c4a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: version.date_project
+	toColumn: LocalDateTable_ab7c97b8-535a-4b9f-8d50-abde94c067ca.Date
+

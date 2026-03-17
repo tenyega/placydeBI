@@ -1,0 +1,118 @@
+table evenements
+	lineageTag: 01a70507-dca1-4095-a053-72fb5de166ee
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: f6216cd2-40e9-4953-860e-c6056256e67f
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_intervenant
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e048756-ae3d-4a1f-a85f-b878842c7b1f
+		summarizeBy: none
+		sourceColumn: id_intervenant
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_debut
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fc9d7f92-f03a-4be5-ae28-b4c75ed91517
+		summarizeBy: none
+		sourceColumn: date_debut
+
+		variation Variation
+			isDefault
+			relationship: d3c245ae-94b7-47a6-a0e3-c5a21d5d7970
+			defaultHierarchy: LocalDateTable_9e32ee84-c518-4ec9-9028-52758059f281.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_fin
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 82725a96-6f11-47ca-9d2d-f604f8652203
+		summarizeBy: none
+		sourceColumn: date_fin
+
+		variation Variation
+			isDefault
+			relationship: c71c3945-887c-481a-ab30-953bb376f6b4
+			defaultHierarchy: LocalDateTable_11c82c94-9836-4207-883c-902fdec621d5.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_evenement
+		dataType: int64
+		formatString: 0
+		lineageTag: dd353a65-5a91-4e49-8839-4925a5621b15
+		summarizeBy: sum
+		sourceColumn: id_evenement
+
+		annotation SummarizationSetBy = Automatic
+
+	column remarque
+		dataType: string
+		lineageTag: f68cec0f-ccb2-43ac-abac-89ddc1fccd4b
+		summarizeBy: none
+		sourceColumn: remarque
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 86a76295-7514-4165-9c81-12a2678ddb21
+		summarizeBy: none
+		sourceColumn: created_at
+
+		variation Variation
+			isDefault
+			relationship: a8cafcb7-88ec-492a-9469-524d334bef18
+			defaultHierarchy: LocalDateTable_b44f6a2d-dfc4-4032-8efd-7c99a232e18f.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at
+		dataType: string
+		lineageTag: e22293f5-3418-4419-ac42-7aa5f74ab46a
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column deleted
+		dataType: string
+		lineageTag: 71df389c-2c56-441a-89bc-a49d85ce8b03
+		summarizeBy: none
+		sourceColumn: deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column deleted_at
+		dataType: string
+		lineageTag: 909c2458-1521-4f80-a053-d42ebe0475e6
+		summarizeBy: none
+		sourceColumn: deleted_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition evenements = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\evenements.csv"),[Delimiter=";", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"id_intervenant", Int64.Type}, {"date_debut", type datetime}, {"date_fin", type datetime}, {"id_evenement", Int64.Type}, {"remarque", type text}, {"created_at", type datetime}, {"updated_at", type text}, {"deleted", type text}, {"deleted_at", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

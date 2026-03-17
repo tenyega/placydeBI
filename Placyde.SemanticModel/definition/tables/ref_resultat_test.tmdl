@@ -1,0 +1,34 @@
+table ref_resultat_test
+	lineageTag: 31fec40d-dc51-4ede-992a-57d2208a1b5e
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: e7b203e0-d7dd-4c2f-80dd-8efce1f25749
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: f9fd996a-1d33-4e69-87c9-0b0a0f237fec
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ref_resultat_test = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\ref_resultat_test.csv"),[Delimiter=";", Columns=2, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

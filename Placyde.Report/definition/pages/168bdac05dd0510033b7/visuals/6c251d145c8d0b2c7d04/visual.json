@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "6c251d145c8d0b2c7d04",
+  "position": {
+    "x": 19,
+    "y": 390,
+    "z": 1000,
+    "height": 330,
+    "width": 444,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "areaChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_cause_annulation_intervention"
+                    }
+                  },
+                  "Property": "nom"
+                }
+              },
+              "queryRef": "ref_cause_annulation_intervention.nom",
+              "nativeQueryRef": "Cause d'annulation intervention",
+              "active": true,
+              "displayName": "Cause d'annulation intervention"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "mc_main_courante"
+                        }
+                      },
+                      "Property": "date_prise_service"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(mc_main_courante.date_prise_service)",
+              "nativeQueryRef": "Nombre d'intervention",
+              "displayName": "Nombre d'intervention"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "mc_main_courante"
+                      }
+                    },
+                    "Property": "date_prise_service"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

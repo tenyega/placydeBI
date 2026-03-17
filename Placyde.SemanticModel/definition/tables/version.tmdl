@@ -1,0 +1,99 @@
+table version
+	lineageTag: 6c5eaa42-475b-42fa-8022-3f430426e4dc
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 197110dd-75c3-4a1f-b173-a4c90d2b3878
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column app_name
+		dataType: string
+		lineageTag: 308a749d-9c24-402e-91ba-749b77d3abaa
+		summarizeBy: none
+		sourceColumn: app_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column definition
+		dataType: string
+		lineageTag: fa4b1fb5-b9e8-477b-b22c-a29e32f45bac
+		summarizeBy: none
+		sourceColumn: definition
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero
+		dataType: string
+		lineageTag: b7c32616-d6fc-47c9-b0fa-2c026d339bd2
+		summarizeBy: none
+		sourceColumn: numero
+
+		annotation SummarizationSetBy = Automatic
+
+	column devops
+		dataType: string
+		lineageTag: f25e13b4-9374-40a0-9794-f64d5f83ca49
+		summarizeBy: none
+		sourceColumn: devops
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_manager
+		dataType: string
+		lineageTag: 68256364-a069-4769-a31d-44161c2b5776
+		summarizeBy: none
+		sourceColumn: project_manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_project
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b7300868-7126-4b7c-9948-20d7d855c7b8
+		summarizeBy: none
+		sourceColumn: date_project
+
+		variation Variation
+			isDefault
+			relationship: 21064aca-ba46-42c3-9533-f458e39b5c4a
+			defaultHierarchy: LocalDateTable_ab7c97b8-535a-4b9f-8d50-abde94c067ca.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column date_prod
+		dataType: string
+		lineageTag: 7cb8a4bc-97b5-4c57-a62c-ebfd1c21115c
+		summarizeBy: none
+		sourceColumn: date_prod
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 7070fe8f-0850-43c5-8c6f-b61bc553b252
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition version = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\version.csv"),[Delimiter=";", Columns=9, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"app_name", type text}, {"definition", type text}, {"numero", type text}, {"devops", type text}, {"project_manager", type text}, {"date_project", type date}, {"date_prod", type text}, {"year", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

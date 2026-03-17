@@ -1,0 +1,195 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "ac27cb2a06051e040005",
+  "position": {
+    "x": 630,
+    "y": 0,
+    "z": 1000,
+    "height": 720,
+    "width": 650,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "🛰️ ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "Analyse de l'Activité par Indicatif",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Ce graphique illustre la répartition des interventions selon les indicatifs opérationnels engagés sur le terrain.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "⚖️ Équilibre Opérationnel",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Répartition homogène :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": " La forme très circulaire du radar indique une ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "répartition extrêmement équilibrée",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": " des missions. Aucun indicatif ne semble surchargé par rapport aux autres, ce qui témoigne d'une excellente gestion de la rotation des équipes.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Couverture des zones :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": " Les indicatifs spécialisés comme ",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "MCeSNCFGARELYON",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": " ou les unités génériques (MCe10, MCe20, MCe31, etc.) affichent des niveaux d'intervention quasi identiques.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "🔍 Points d'Attention",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Données non renseignées (Blank) :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": " On note une portion du graphique attribuée à \"(Blank)\". Cela représente des interventions où l'indicatif n'a pas été saisi. Un nettoyage de ces données permettrait de réattribuer ces missions aux bonnes unités.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Polyvalence :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": " La présence d'indicatifs variés (MCe50, MCe51, MCe221) montre une couverture multi-sites efficace, garantissant une présence cynotechnique sur l'ensemble du réseau.",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

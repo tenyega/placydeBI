@@ -1,0 +1,63 @@
+table mc_fin_service_anticipee
+	lineageTag: 234db0d4-8885-4c68-980f-2f4ba48aee08
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: cbe4a328-7c70-4a09-a07a-2a11029503aa
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_depart
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: ac83b66a-5152-456e-948a-350db336aeda
+		summarizeBy: none
+		sourceColumn: heure_depart
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column ref_cause_depart_anticipe_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 76a6dd15-2d95-4ab8-90f8-4d15c6e4906a
+		summarizeBy: none
+		sourceColumn: ref_cause_depart_anticipe_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column mc_main_courante_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c85cabf-bb8a-43b0-9816-14ac86e15e95
+		summarizeBy: none
+		sourceColumn: mc_main_courante_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column commentaire
+		dataType: string
+		lineageTag: ca97d0b6-035d-4b5f-ac34-1ec847aa117a
+		summarizeBy: none
+		sourceColumn: commentaire
+
+		annotation SummarizationSetBy = Automatic
+
+	partition mc_fin_service_anticipee = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\mc_fin_service_anticipee.csv"),[Delimiter=";", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.Csv]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"heure_depart", type time}, {"ref_cause_depart_anticipe_id", Int64.Type}, {"mc_main_courante_id", Int64.Type}, {"commentaire", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

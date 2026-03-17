@@ -1,0 +1,34 @@
+table ref_type_jour_travail
+	lineageTag: a4dfa4fe-c86e-4a67-9465-fd58c4d0191c
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 82c7fddc-7a2b-43f7-b86a-0d9e141be051
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: 90f4a356-85fb-489f-88a6-fa5892f9562e
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ref_type_jour_travail = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\ref_type_jour_travail.csv"),[Delimiter=";", Columns=2, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

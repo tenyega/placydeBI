@@ -1,0 +1,57 @@
+table recover_pass
+	lineageTag: 439aca76-628b-4552-bbe3-72dd93b774d1
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 760af8b7-ccf4-4cf8-991e-19dbc342b3d3
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f6e2ef5-4d50-4511-b421-9aa8386fad63
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column code
+		dataType: string
+		lineageTag: 7a469e9a-3fc4-4c1b-812d-c042fcf9eab4
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 68f4f2af-6129-4cf1-b8cb-714958ed2420
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		variation Variation
+			isDefault
+			relationship: c1938c69-4770-4638-923e-7a8a60a7850b
+			defaultHierarchy: LocalDateTable_2368b093-275b-4cfa-b726-6dcc20d26608.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition recover_pass = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\recover_pass.csv"),[Delimiter=";", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"user_id", Int64.Type}, {"code", type text}, {"updated_at", type datetime}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

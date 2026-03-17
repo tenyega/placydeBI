@@ -1,0 +1,192 @@
+table log_mission
+	isHidden
+	lineageTag: 9da9cc66-0859-4c20-9ab9-77232533caaf
+
+	column id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5d9b1244-ac75-41f5-a72f-06eeb9196bc9
+		summarizeBy: sum
+		sourceColumn: id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_debut
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: d92a654f-d5e2-4ac6-bb22-cfd02081973c
+		summarizeBy: none
+		sourceColumn: date_debut
+
+		variation Variation
+			isDefault
+			relationship: 7b35d8ec-f2d2-48bc-81db-d474ce9305b0
+			defaultHierarchy: LocalDateTable_bd2ad763-e4c6-42ca-9749-69f4c3d1bfcf.'Hiérarchie de dates'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column heure_debut
+		dataType: dateTime
+		isHidden
+		formatString: Long Time
+		lineageTag: b2d95431-8508-4f5b-b8ba-c2193802a208
+		summarizeBy: none
+		sourceColumn: heure_debut
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column id_ligne
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 29cbfc9b-4169-4f16-913b-fcb550d5c4b0
+		summarizeBy: sum
+		sourceColumn: id_ligne
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_station
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1e906fed-8f24-4b7d-b279-c7ad778697fc
+		summarizeBy: sum
+		sourceColumn: id_station
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_intervenant
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 385d1f9c-a3ef-4172-bd23-607455e3a298
+		summarizeBy: none
+		sourceColumn: id_intervenant
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_evenement
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 048d469f-1711-4672-8936-94994d69b5f4
+		summarizeBy: sum
+		sourceColumn: id_evenement
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_attachement
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a245cf9d-0d22-49b2-b64a-83bebab6c504
+		summarizeBy: sum
+		sourceColumn: id_attachement
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_fin
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 43b3d47d-8a16-474d-8b93-a6026187bb10
+		summarizeBy: none
+		sourceColumn: date_fin
+
+		variation Variation
+			isDefault
+			relationship: 2f1b4d6f-4a6c-44c3-a655-a266616f6fc4
+			defaultHierarchy: LocalDateTable_30cd1eb1-81c9-4d47-97bd-6eba80327ab7.'Hiérarchie de dates'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column heure_fin
+		dataType: dateTime
+		isHidden
+		formatString: Long Time
+		lineageTag: 6a1c7162-58ce-4abe-acf2-8b009a5f0941
+		summarizeBy: none
+		sourceColumn: heure_fin
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column id_user_set
+		dataType: string
+		isHidden
+		lineageTag: f4842af2-91cf-480d-bf25-e0f307202b82
+		summarizeBy: none
+		sourceColumn: id_user_set
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_user_unset
+		dataType: string
+		isHidden
+		lineageTag: ff5ea539-2d93-4f1d-a13e-292506bd06a5
+		summarizeBy: none
+		sourceColumn: id_user_unset
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_reseau_intervenant
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9bca49d5-4b52-4c48-a646-002cb50bd7b5
+		summarizeBy: none
+		sourceColumn: id_reseau_intervenant
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition log_mission = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\log_mission.csv"),[Delimiter=";", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"date_debut", type date}, {"heure_debut", type time}, {"id_ligne", Int64.Type}, {"id_station", Int64.Type}, {"id_intervenant", Int64.Type}, {"id_evenement", Int64.Type}, {"id_attachement", Int64.Type}, {"date_fin", type date}, {"heure_fin", type time}, {"id_user_set", type text}, {"id_user_unset", type text}, {"id_reseau_intervenant", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

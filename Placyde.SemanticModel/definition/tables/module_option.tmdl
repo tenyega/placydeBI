@@ -1,0 +1,43 @@
+table module_option
+	lineageTag: 781c0562-0a03-4b8c-9abc-ecf3f2027383
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b3c083a-dbf9-4b8e-895c-4a31057bfe04
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 294d733b-36bb-42ef-9e73-5c63dbe0d861
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column perimetre
+		dataType: string
+		lineageTag: 42c49502-5df6-459e-9f89-81ca62c88950
+		summarizeBy: none
+		sourceColumn: perimetre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition module_option = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\module_option.csv"),[Delimiter=";", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"user_id", Int64.Type}, {"perimetre", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

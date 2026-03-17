@@ -1,0 +1,51 @@
+table chien
+	lineageTag: f1d95790-2a54-4db8-9cce-fd3f9c4f0e45
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f1f88dc-7e2a-4160-b95c-2f2cfcf37e2d
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_chien
+		dataType: string
+		lineageTag: 6e22ea8b-ebd1-44fb-9011-0176cdca44f0
+		summarizeBy: none
+		sourceColumn: nom_chien
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_race_chien
+		dataType: string
+		lineageTag: 179525e3-473a-4006-8b4d-6a307826695d
+		summarizeBy: none
+		sourceColumn: ref_race_chien
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_entreprise
+		dataType: int64
+		formatString: 0
+		lineageTag: a3bcd418-64b4-4195-96eb-3f6aaf6077e9
+		summarizeBy: none
+		sourceColumn: id_entreprise
+
+		annotation SummarizationSetBy = Automatic
+
+	partition chien = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\chien.csv"),[Delimiter=";", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom_chien", type text}, {"ref_race_chien", type text}, {"id_entreprise", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

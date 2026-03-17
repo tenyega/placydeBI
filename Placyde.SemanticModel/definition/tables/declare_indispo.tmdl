@@ -1,0 +1,170 @@
+table declare_indispo
+	lineageTag: adc7ba84-aa09-4e33-8174-05bf8e321a3d
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: aa6e408e-1f25-4436-8737-cf0024c94741
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_intervenant
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a9e7cb4-a349-4d36-9846-873d957542eb
+		summarizeBy: none
+		sourceColumn: id_intervenant
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_debut
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 91afaa36-36c6-4c0c-93f8-f99f7d1d32df
+		summarizeBy: none
+		sourceColumn: date_debut
+
+		variation Variation
+			isDefault
+			relationship: 55e2faf9-9282-4c12-9c7d-b6bddaac60b8
+			defaultHierarchy: LocalDateTable_f98c09ab-a316-4ea8-b851-5ac969235412.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_fin
+		dataType: string
+		lineageTag: 00ee994f-879a-4d06-8676-8baa82d7cf5d
+		summarizeBy: none
+		sourceColumn: date_fin
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_debut
+		dataType: string
+		lineageTag: eafbbe33-6704-4960-8f36-64882342a720
+		summarizeBy: none
+		sourceColumn: heure_debut
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_fin
+		dataType: string
+		lineageTag: 44c7c6b5-783b-4248-9907-eafb5651d336
+		summarizeBy: none
+		sourceColumn: heure_fin
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_evenement
+		dataType: int64
+		formatString: 0
+		lineageTag: 89688656-e1ee-4bed-a812-14ae3daa45f8
+		summarizeBy: sum
+		sourceColumn: id_evenement
+
+		annotation SummarizationSetBy = Automatic
+
+	column remarque
+		dataType: string
+		lineageTag: ba269ab6-3528-4985-b479-2469d6b41617
+		summarizeBy: none
+		sourceColumn: remarque
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_list_evt
+		dataType: string
+		lineageTag: f0f10df4-cf5d-47d9-ae73-0417e7569780
+		summarizeBy: none
+		sourceColumn: id_list_evt
+
+		annotation SummarizationSetBy = Automatic
+
+	column indispo_vhl
+		dataType: string
+		lineageTag: 5ad6c9a0-73b2-4ca7-8b8e-6e600e9de128
+		summarizeBy: none
+		sourceColumn: indispo_vhl
+
+		annotation SummarizationSetBy = Automatic
+
+	column indispo_totale
+		dataType: string
+		lineageTag: 7538bd06-bf3a-4d10-b023-75eaa8a405fe
+		summarizeBy: none
+		sourceColumn: indispo_totale
+
+		annotation SummarizationSetBy = Automatic
+
+	column deleted
+		dataType: string
+		lineageTag: 641b5f9c-6681-461b-b84e-2cd3c42a0cbe
+		summarizeBy: none
+		sourceColumn: deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column login_created
+		dataType: string
+		lineageTag: 80953aa7-3d99-40ac-9386-7d655b8f708f
+		summarizeBy: none
+		sourceColumn: login_created
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: string
+		lineageTag: 7719ddfd-0560-4b21-bd72-370c29d0739d
+		summarizeBy: none
+		sourceColumn: created_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column login_updated
+		dataType: string
+		lineageTag: f5277657-f200-4908-abca-ad8079acb9ac
+		summarizeBy: none
+		sourceColumn: login_updated
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at
+		dataType: string
+		lineageTag: c85f9535-cb82-4c7f-8ad7-0ca1fc34cd26
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column login_deleted
+		dataType: string
+		lineageTag: f8c6a3db-de98-478e-997a-989d98270a1a
+		summarizeBy: none
+		sourceColumn: login_deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column deleted_at
+		dataType: string
+		lineageTag: fc72269e-7e6c-4290-937a-87d3fc1b4582
+		summarizeBy: none
+		sourceColumn: deleted_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition declare_indispo = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\declare_indispo.csv"),[Delimiter=";", Columns=18, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"id_intervenant", Int64.Type}, {"date_debut", type datetime}, {"date_fin", type text}, {"heure_debut", type text}, {"heure_fin", type text}, {"id_evenement", Int64.Type}, {"remarque", type text}, {"id_list_evt", type text}, {"indispo_vhl", type text}, {"indispo_totale", type text}, {"deleted", type text}, {"login_created", type text}, {"created_at", type text}, {"login_updated", type text}, {"updated_at", type text}, {"login_deleted", type text}, {"deleted_at", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,145 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "acdc4741c72041925718",
+  "position": {
+    "x": 0,
+    "y": 195,
+    "z": 0,
+    "height": 456.25,
+    "width": 583.75,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "intervention"
+                    }
+                  },
+                  "Property": "Durée intervention"
+                }
+              },
+              "queryRef": "intervention.Durée intervention",
+              "nativeQueryRef": "Durée intervention",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "intervention"
+                        }
+                      },
+                      "Property": "réactivité agent (min)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(intervention.réactivité agent (min))",
+              "nativeQueryRef": "Réactivité d'agent",
+              "displayName": "Réactivité d'agent"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "intervention"
+                        }
+                      },
+                      "Property": "heure_appel_sur_place"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(intervention.heure_appel_sur_place)",
+              "nativeQueryRef": "Heure d'appel par PC",
+              "displayName": "Heure d'appel par PC"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "intervention"
+                      }
+                    },
+                    "Property": "réactivité agent (min)"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Scalar'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,52 @@
+table couverture_reseau
+	lineageTag: 434804d2-7c57-4b4a-b2c4-be3b334bde71
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 54fd9146-be02-43f3-98af-910355dbfe12
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_station
+		dataType: string
+		lineageTag: ba103037-b588-4a45-a552-7a932cee668d
+		summarizeBy: none
+		sourceColumn: nom_station
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_ligne
+		dataType: int64
+		formatString: 0
+		lineageTag: ea66f0e5-cf9c-4341-bb27-af10d6da0b2e
+		summarizeBy: sum
+		sourceColumn: id_ligne
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_station
+		dataType: int64
+		formatString: 0
+		lineageTag: fa6d722b-9dc0-4818-9cd1-cf067584c0c4
+		summarizeBy: sum
+		sourceColumn: id_station
+
+		annotation SummarizationSetBy = Automatic
+
+	partition couverture_reseau = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\couverture_reseau.csv"),[Delimiter=";", Columns=4, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom_station", type text}, {"id_ligne", Int64.Type}, {"id_station", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,34 @@
+table ref_type_penalite
+	lineageTag: f6b957ab-7e5b-48ce-a995-d7fbe4af5c97
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6be25d08-801b-4cdb-b6bf-66e6a6c8dc12
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: feec1b23-891e-4a97-9e56-62f39422fcf6
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ref_type_penalite = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\ref_type_penalite.csv"),[Delimiter=";", Columns=2, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

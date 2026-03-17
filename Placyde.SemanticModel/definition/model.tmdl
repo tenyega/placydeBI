@@ -1,0 +1,101 @@
+model Model
+	culture: fr-FR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-FR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Erreurs dans les requêtes qui ont été chargées sur 17/03/2026 10:46:04.
+queryGroup 'Erreurs des requêtes – 17/03/2026 10:46:04'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["auth","bugs","calendar","chien","couverture_reseau","pointage","module_option","mc_relance_chien","declare_indispo","emplacement_objet","entreprises","ent_entrainement","ent_resultat_exercice","evenements","fact_autres_parametres","fact_penalites_appliquees","fact_penalites_liste","fact_tarifs_horaires","ent_exercice","indispo","intervenant","intervention","lignes","liste_statut_environnement","list_attachement","log_evenements","log_mission","mc_detente_chien","mc_fin_service_anticipee","mc_main_courante","mc_patrouille","roles","reseau_intervenant","ref_type_toucher","ref_type_resultat_exercice","ref_type_penalite","recover_pass","ref_cause_annulation_intervention","ref_cause_depart_anticipe","ref_ent_etat","ref_ent_statut","ref_localisation_colis","ref_race_chien","ref_matiere","ref_mc_statut","ref_moment_journee","ref_position_colis","ref_type_jour_travail","ref_type_colis","ref_resultat_test","ref_resultat_olfaction","ref_reponse","search_audiences","stations","statut_environnement","themes_bugs","type_evenement","version"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table auth
+ref table bugs
+ref table DateTableTemplate_6335234e-638e-4471-8ff5-449ba34822e0
+ref table LocalDateTable_f3de4767-788c-4cbf-b01b-913d95e5defa
+ref table calendar
+ref table chien
+ref table couverture_reseau
+ref table pointage
+ref table LocalDateTable_50fd81d6-d3cd-47a2-8196-ab0b5e699010
+ref table module_option
+ref table mc_relance_chien
+ref table declare_indispo
+ref table LocalDateTable_f98c09ab-a316-4ea8-b851-5ac969235412
+ref table emplacement_objet
+ref table entreprises
+ref table ent_entrainement
+ref table LocalDateTable_504bc6e4-1bce-43c7-8869-e13bbfed599e
+ref table LocalDateTable_a119225e-27e2-4879-bb85-dfd235968aa8
+ref table ent_exercice
+ref table ent_resultat_exercice
+ref table evenements
+ref table LocalDateTable_9e32ee84-c518-4ec9-9028-52758059f281
+ref table LocalDateTable_11c82c94-9836-4207-883c-902fdec621d5
+ref table LocalDateTable_b44f6a2d-dfc4-4032-8efd-7c99a232e18f
+ref table fact_autres_parametres
+ref table fact_penalites_appliquees
+ref table fact_penalites_liste
+ref table fact_tarifs_horaires
+ref table indispo
+ref table intervenant
+ref table LocalDateTable_ee66248a-f4bd-40d7-a823-86d9130085fb
+ref table intervention
+ref table lignes
+ref table liste_statut_environnement
+ref table list_attachement
+ref table LocalDateTable_d5c4fb5f-5bae-49c7-b7a4-98b4dcbf8c18
+ref table log_evenements
+ref table LocalDateTable_b346097e-e948-4ee1-b66d-9547b898f229
+ref table LocalDateTable_1550c959-588d-4e23-983a-37d54a0a316c
+ref table log_mission
+ref table LocalDateTable_bd2ad763-e4c6-42ca-9749-69f4c3d1bfcf
+ref table LocalDateTable_30cd1eb1-81c9-4d47-97bd-6eba80327ab7
+ref table mc_detente_chien
+ref table mc_fin_service_anticipee
+ref table mc_main_courante
+ref table LocalDateTable_fa950c1c-162a-4e55-b910-554257d848a1
+ref table LocalDateTable_07d5b3af-b997-4d0b-82a6-b5f398a776fa
+ref table mc_patrouille
+ref table roles
+ref table reseau_intervenant
+ref table LocalDateTable_8827073c-3a0e-4c39-9dca-a3e73f70466f
+ref table ref_type_toucher
+ref table ref_type_resultat_exercice
+ref table ref_type_penalite
+ref table recover_pass
+ref table LocalDateTable_2368b093-275b-4cfa-b726-6dcc20d26608
+ref table ref_cause_annulation_intervention
+ref table ref_cause_depart_anticipe
+ref table ref_ent_etat
+ref table ref_ent_statut
+ref table ref_localisation_colis
+ref table ref_race_chien
+ref table ref_matiere
+ref table ref_mc_statut
+ref table ref_moment_journee
+ref table ref_position_colis
+ref table ref_type_jour_travail
+ref table ref_type_colis
+ref table ref_resultat_test
+ref table ref_resultat_olfaction
+ref table ref_reponse
+ref table search_audiences
+ref table LocalDateTable_5cbfd85c-7894-4760-94c1-e30a7a2e07a3
+ref table stations
+ref table statut_environnement
+ref table themes_bugs
+ref table type_evenement
+ref table version
+ref table LocalDateTable_ab7c97b8-535a-4b9f-8d50-abde94c067ca
+
+ref cultureInfo fr-FR
+

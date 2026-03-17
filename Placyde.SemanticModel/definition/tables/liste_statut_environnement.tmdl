@@ -1,0 +1,34 @@
+table liste_statut_environnement
+	lineageTag: 1fd42752-5bcf-4be7-b9b8-caaf8e16f7be
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d12d3b7-e79a-4c82-904c-c61b5be73c16
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: 2c193b0a-6548-4578-96d1-33c8b0848d4a
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	partition liste_statut_environnement = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\liste_statut_environnement.csv"),[Delimiter=";", Columns=2, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

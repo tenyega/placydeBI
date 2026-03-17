@@ -1,0 +1,34 @@
+table emplacement_objet
+	lineageTag: 8d56564c-addb-468e-aa33-a1d2c5df46ed
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0698e64e-e0ff-4d14-8538-6563b0acf7a7
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column emplacement
+		dataType: string
+		lineageTag: 230b4b1b-accf-4e30-9d77-ce9da3453953
+		summarizeBy: none
+		sourceColumn: emplacement
+
+		annotation SummarizationSetBy = Automatic
+
+	partition emplacement_objet = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\emplacement_objet.csv"),[Delimiter=";", Columns=2, Encoding=65001]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"emplacement", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

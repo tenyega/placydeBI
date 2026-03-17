@@ -1,0 +1,42 @@
+table entreprises
+	lineageTag: 4b5c4125-b896-4eb2-a66b-22ca2ed6dd06
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: abf31e9a-bcbb-419a-8836-c29a7bc02934
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 45183da6-ff3a-47cc-9a69-ebcd4777e40e
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column active
+		dataType: string
+		lineageTag: c48e0272-2335-4437-a197-65e0ebc0f415
+		summarizeBy: none
+		sourceColumn: active
+
+		annotation SummarizationSetBy = Automatic
+
+	partition entreprises = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\entreprises.csv"),[Delimiter=";", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"name", type text}, {"active", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

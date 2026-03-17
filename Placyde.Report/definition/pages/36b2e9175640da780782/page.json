@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "36b2e9175640da780782",
+  "displayName": "Réactivité Agent et durée d'interventation",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3cb090206ce4dea5c089",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "intervention"
+              }
+            },
+            "Property": "heure_fin"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "3732a3bbbbb27a410919",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "acd41e503631cd101a80",
+        "boundFilter": "3cb090206ce4dea5c089",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "intervention"
+              }
+            },
+            "Property": "heure_fin"
+          }
+        }
+      }
+    ]
+  }
+}

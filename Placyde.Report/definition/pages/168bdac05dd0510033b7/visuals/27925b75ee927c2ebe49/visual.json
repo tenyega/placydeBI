@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "27925b75ee927c2ebe49",
+  "position": {
+    "x": 18.571428571428573,
+    "y": 30.000000000000004,
+    "z": 0,
+    "height": 350,
+    "width": 511.42857142857144,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "mc_main_courante"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "date_prise_service"
+                        }
+                      },
+                      "Hierarchy": "Hiérarchie de dates"
+                    }
+                  },
+                  "Level": "Année"
+                }
+              },
+              "queryRef": "mc_main_courante.date_prise_service.Variation.Hiérarchie de dates.Année",
+              "nativeQueryRef": "date_prise_service Année",
+              "active": true
+            }
+          ],
+          "showAll": true
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "mc_main_courante"
+                        }
+                      },
+                      "Property": "fin_anticipee"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(mc_main_courante.fin_anticipee)",
+              "nativeQueryRef": "Nombre de fin_anticipee"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "PropertyVariationSource": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "mc_main_courante"
+                          }
+                        },
+                        "Name": "Variation",
+                        "Property": "date_prise_service"
+                      }
+                    },
+                    "Hierarchy": "Hiérarchie de dates"
+                  }
+                },
+                "Level": "Année"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

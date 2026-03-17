@@ -1,0 +1,124 @@
+table ent_entrainement
+	lineageTag: c8e21473-938a-4081-8bb3-b9e451a7e711
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 45c4dcf7-e36d-44cc-8851-27a1955aaa7c
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column debut
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1de82e31-43d7-4292-88f3-63346289b6af
+		summarizeBy: none
+		sourceColumn: debut
+
+		variation Variation
+			isDefault
+			relationship: 5cfe2189-b03d-4215-af10-7d2e76b9279e
+			defaultHierarchy: LocalDateTable_504bc6e4-1bce-43c7-8869-e13bbfed599e.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column list_attachement_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 51ae5114-2c8b-4448-a88b-d53f211b218b
+		summarizeBy: none
+		sourceColumn: list_attachement_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ligne_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9570fd7c-244e-461e-9442-b2f58d2cc8c0
+		summarizeBy: sum
+		sourceColumn: ligne_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2809c459-1efc-4f04-9ab8-332aa4a2dad5
+		summarizeBy: sum
+		sourceColumn: station_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column commentaire
+		dataType: string
+		lineageTag: d9013e53-bb2d-49da-a090-def3feaec4d9
+		summarizeBy: none
+		sourceColumn: commentaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b2927be5-a6e1-4010-b9a3-2fce5af71ca4
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_creation
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c2adbfaf-5966-418c-a84d-e98fa675887b
+		summarizeBy: none
+		sourceColumn: date_creation
+
+		variation Variation
+			isDefault
+			relationship: 95c96504-77c1-4624-b058-df910dc180ad
+			defaultHierarchy: LocalDateTable_a119225e-27e2-4879-bb85-dfd235968aa8.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_fin
+		dataType: string
+		lineageTag: 17fc74ba-b28f-4517-b315-17b9294db46e
+		summarizeBy: none
+		sourceColumn: heure_fin
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_ent_statut_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 532c4cd2-7e2c-470e-ba92-918598f1df3a
+		summarizeBy: none
+		sourceColumn: ref_ent_statut_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_ent_etat_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 714986c9-444e-471d-9d22-bbd1b764ddb8
+		summarizeBy: none
+		sourceColumn: ref_ent_etat_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ent_entrainement = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\ent_entrainement.csv"),[Delimiter=";", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"debut", type datetime}, {"list_attachement_id", Int64.Type}, {"ligne_id", Int64.Type}, {"station_id", Int64.Type}, {"commentaire", type text}, {"user_id", Int64.Type}, {"date_creation", type datetime}, {"heure_fin", type text}, {"ref_ent_statut_id", Int64.Type}, {"ref_ent_etat_id", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

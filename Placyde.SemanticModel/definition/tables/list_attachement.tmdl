@@ -1,0 +1,81 @@
+table list_attachement
+	lineageTag: 0e8f09f7-6e96-4cf5-a155-c872b1312c77
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8aa41c99-490a-46ef-bda1-400edf5f9446
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0a0db975-3618-41f1-96fe-07c3ba724cbf
+		summarizeBy: none
+		sourceColumn: created_at
+
+		variation Variation
+			isDefault
+			relationship: 638a96c5-c033-4e71-8190-dbe2d8c14f13
+			defaultHierarchy: LocalDateTable_d5c4fb5f-5bae-49c7-b7a4-98b4dcbf8c18.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at
+		dataType: string
+		lineageTag: 871e0ef9-bab7-44fc-b002-484b4587281e
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column gare
+		dataType: string
+		lineageTag: 2b1bc096-9e83-40c1-91f3-9bf07a66a74c
+		summarizeBy: none
+		sourceColumn: gare
+
+		annotation SummarizationSetBy = Automatic
+
+	column active
+		dataType: string
+		lineageTag: b2666b1c-285d-4b5a-82aa-2e2380acee58
+		summarizeBy: none
+		sourceColumn: active
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_entreprise
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e2baee3-7b8d-4714-a814-952ab22068ad
+		summarizeBy: sum
+		sourceColumn: id_entreprise
+
+		annotation SummarizationSetBy = Automatic
+
+	column utilise_vhl
+		dataType: string
+		lineageTag: 3d889a72-f523-4d12-9143-d1923b322b0b
+		summarizeBy: none
+		sourceColumn: utilise_vhl
+
+		annotation SummarizationSetBy = Automatic
+
+	partition list_attachement = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\list_attachement.csv"),[Delimiter=";", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"created_at", type datetime}, {"updated_at", type text}, {"gare", type text}, {"active", type text}, {"id_entreprise", Int64.Type}, {"utilise_vhl", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

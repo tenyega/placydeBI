@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "b6483097eb2251c7e693",
+  "position": {
+    "x": 11.428571428571429,
+    "y": 370,
+    "z": 1000,
+    "height": 350,
+    "width": 604.28571428571433,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "chien"
+                    }
+                  },
+                  "Property": "nom_chien"
+                }
+              },
+              "queryRef": "chien.nom_chien",
+              "nativeQueryRef": "Chien",
+              "active": true,
+              "displayName": "Chien"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "mc_main_courante"
+                        }
+                      },
+                      "Property": "date_prise_service"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(mc_main_courante.date_prise_service)",
+              "nativeQueryRef": "nombre d'intervention",
+              "displayName": "nombre d'intervention"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "mc_main_courante"
+                      }
+                    },
+                    "Property": "date_prise_service"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

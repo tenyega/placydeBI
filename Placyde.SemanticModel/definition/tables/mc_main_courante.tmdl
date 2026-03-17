@@ -1,0 +1,150 @@
+table mc_main_courante
+	lineageTag: d189365b-d7f9-4f76-8e61-b82b2ca0bfb5
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: acdbf6c2-1aa0-44d6-85e4-97ea0d6ef7d0
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ef4585ed-1f9f-4068-a8c9-5cb391f9a84b
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_creation
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2a636295-fece-4de2-80f9-1e1c7d0ab85a
+		summarizeBy: none
+		sourceColumn: date_creation
+
+		variation Variation
+			isDefault
+			relationship: b6061abf-6ea0-4257-8397-cddff352654d
+			defaultHierarchy: LocalDateTable_fa950c1c-162a-4e55-b910-554257d848a1.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_prise_service
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 59e507d7-63d1-4de6-bf69-bbda2bd5adac
+		summarizeBy: none
+		sourceColumn: date_prise_service
+
+		variation Variation
+			isDefault
+			relationship: 5a3df092-0320-4d5f-a70f-8db8d665161b
+			defaultHierarchy: LocalDateTable_07d5b3af-b997-4d0b-82a6-b5f398a776fa.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_appel_pc
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 72053adf-e0bd-4fc4-ab29-2af2211bb5fc
+		summarizeBy: none
+		sourceColumn: heure_appel_pc
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column numero_tetra
+		dataType: int64
+		formatString: 0
+		lineageTag: 6cedf6bb-7468-4acb-84ee-274414dbbea1
+		summarizeBy: sum
+		sourceColumn: numero_tetra
+
+		annotation SummarizationSetBy = Automatic
+
+	column chien_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5937b694-23c7-4a81-8485-4c1ce1d841e3
+		summarizeBy: none
+		sourceColumn: chien_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column vhl_operationnel
+		dataType: string
+		lineageTag: f4ebbc42-cf1a-4fe1-b9fa-f92d98ae9181
+		summarizeBy: none
+		sourceColumn: vhl_operationnel
+
+		annotation SummarizationSetBy = Automatic
+
+	column briefing_gpsr
+		dataType: string
+		lineageTag: f99e74d5-174b-40f9-b9dc-0e638b3e8045
+		summarizeBy: none
+		sourceColumn: briefing_gpsr
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure_appel_fin_service
+		dataType: string
+		lineageTag: 8034c633-2bed-449b-ba20-d7d838a7bc75
+		summarizeBy: none
+		sourceColumn: heure_appel_fin_service
+
+		annotation SummarizationSetBy = Automatic
+
+	column commentaire
+		dataType: string
+		lineageTag: 82cfae37-a9bc-4a44-a08f-40d387b38f68
+		summarizeBy: none
+		sourceColumn: commentaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_mc_statut_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4245e7f1-1f4a-4fd0-bb38-c43f68978ec7
+		summarizeBy: none
+		sourceColumn: ref_mc_statut_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_attachement
+		dataType: int64
+		formatString: 0
+		lineageTag: 7693bfb9-f005-4ea7-be87-a67814ae8744
+		summarizeBy: sum
+		sourceColumn: id_attachement
+
+		annotation SummarizationSetBy = Automatic
+
+	column fin_anticipee
+		dataType: string
+		lineageTag: a018210e-2ab8-495b-b0df-76149cdb6d6c
+		summarizeBy: none
+		sourceColumn: fin_anticipee
+
+		annotation SummarizationSetBy = Automatic
+
+	partition mc_main_courante = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\mc_main_courante.csv"),[Delimiter=";", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"user_id", Int64.Type}, {"date_creation", type datetime}, {"date_prise_service", type datetime}, {"heure_appel_pc", type time}, {"numero_tetra", Int64.Type}, {"chien_id", Int64.Type}, {"vhl_operationnel", type text}, {"briefing_gpsr", type text}, {"heure_appel_fin_service", type text}, {"commentaire", type text}, {"ref_mc_statut_id", Int64.Type}, {"id_attachement", Int64.Type}, {"fin_anticipee", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

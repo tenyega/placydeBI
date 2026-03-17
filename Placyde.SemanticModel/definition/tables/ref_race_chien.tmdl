@@ -1,0 +1,34 @@
+table ref_race_chien
+	lineageTag: a7d7512f-c6eb-4e0f-8db5-91cb29c380ff
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: b9d33a07-e392-4293-b295-711352851eda
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_race
+		dataType: string
+		lineageTag: d6eec996-4306-4e98-98aa-3996651f462f
+		summarizeBy: none
+		sourceColumn: nom_race
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ref_race_chien = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\ref_race_chien.csv"),[Delimiter=";", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"nom_race", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

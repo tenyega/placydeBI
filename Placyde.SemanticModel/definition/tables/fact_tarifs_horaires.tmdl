@@ -1,0 +1,61 @@
+table fact_tarifs_horaires
+	lineageTag: d8aaeafa-4969-4845-adbc-9e59bed276a8
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 427a2145-1f96-4655-83f6-caca619ef4d2
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column list_attachement_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b1fd70e1-8eb5-4742-b2bd-a5d45812e1b1
+		summarizeBy: none
+		sourceColumn: list_attachement_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_type_jour_travail_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 221b0260-8138-4821-b862-7ec15e75a157
+		summarizeBy: none
+		sourceColumn: ref_type_jour_travail_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_moment_journee_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b82b2795-adb9-42f2-a918-1459d09ec536
+		summarizeBy: none
+		sourceColumn: ref_moment_journee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tarif_horaire
+		dataType: string
+		lineageTag: 6122adfc-32b7-42e7-a2b6-e880e9617b9e
+		summarizeBy: none
+		sourceColumn: tarif_horaire
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_tarifs_horaires = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\fact_tarifs_horaires.csv"),[Delimiter=";", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"list_attachement_id", Int64.Type}, {"ref_type_jour_travail_id", Int64.Type}, {"ref_moment_journee_id", Int64.Type}, {"tarif_horaire", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

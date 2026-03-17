@@ -1,0 +1,68 @@
+table fact_penalites_appliquees
+	lineageTag: 5a5638fd-8965-4a19-8cf2-25a2cd6832e3
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: c5192c17-64d5-482f-bb37-f8f2c8846de5
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column mois_id
+		dataType: int64
+		formatString: 0
+		lineageTag: cd6d431c-8899-4fe4-97ff-0694204e8c4f
+		summarizeBy: sum
+		sourceColumn: mois_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column list_attachement_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ce482280-cc17-4c35-a309-98edda323abc
+		summarizeBy: none
+		sourceColumn: list_attachement_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column montant_penalites_part_non_couv
+		dataType: string
+		lineageTag: 6e8a3770-1428-4990-9690-73c0d1c8b7a1
+		summarizeBy: none
+		sourceColumn: montant_penalites_part_non_couv
+
+		annotation SummarizationSetBy = Automatic
+
+	column montant_penalites_integral_non_couv
+		dataType: string
+		lineageTag: fea043be-0390-4530-a5e4-e9dfcb6b97e8
+		summarizeBy: none
+		sourceColumn: montant_penalites_integral_non_couv
+
+		annotation SummarizationSetBy = Automatic
+
+	column commentaire
+		dataType: string
+		lineageTag: 639b3fb4-512c-4f41-84f0-2db5d6fdd500
+		summarizeBy: none
+		sourceColumn: commentaire
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_penalites_appliquees = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\fact_penalites_appliquees.csv"),[Delimiter=";", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"mois_id", Int64.Type}, {"list_attachement_id", Int64.Type}, {"montant_penalites_part_non_couv", type text}, {"montant_penalites_integral_non_couv", type text}, {"commentaire", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

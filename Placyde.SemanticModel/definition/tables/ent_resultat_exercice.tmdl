@@ -1,0 +1,87 @@
+table ent_resultat_exercice
+	lineageTag: 043cb471-02e1-4635-9853-89008b3ea2c1
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: ef56d662-9995-4f4e-bb11-f3107ec4fce3
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ent_exercice_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 84324316-8352-43aa-8ee9-04d766ace455
+		summarizeBy: none
+		sourceColumn: ent_exercice_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column equipage_user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d7c2b9d-5b6d-4642-b288-39ebd40ad00c
+		summarizeBy: sum
+		sourceColumn: equipage_user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column equipage_chien_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 313009a2-d415-46a0-a6c0-9e62de5590d3
+		summarizeBy: sum
+		sourceColumn: equipage_chien_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_type_toucher_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 081972eb-b52a-42ff-bbb2-b0edeae89b2c
+		summarizeBy: none
+		sourceColumn: ref_type_toucher_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_type_resultat_exercice_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 66282b58-e7b6-45e9-8cae-d2061e783138
+		summarizeBy: none
+		sourceColumn: ref_type_resultat_exercice_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column commentaire
+		dataType: string
+		lineageTag: 8c56f92d-6d30-4860-9404-41d965767d4a
+		summarizeBy: none
+		sourceColumn: commentaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column stagiaire
+		dataType: string
+		lineageTag: 08f7bc98-f613-4878-abfa-630cb8a341ca
+		summarizeBy: none
+		sourceColumn: stagiaire
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ent_resultat_exercice = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mdolm\Downloads\ent_resultat_exercice.csv"),[Delimiter=";", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"id", Int64.Type}, {"ent_exercice_id", Int64.Type}, {"equipage_user_id", Int64.Type}, {"equipage_chien_id", Int64.Type}, {"ref_type_toucher_id", Int64.Type}, {"ref_type_resultat_exercice_id", Int64.Type}, {"commentaire", type text}, {"stagiaire", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
