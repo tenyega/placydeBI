@@ -13894,6 +13894,16 @@ cultureInfo fr-FR
 			          "gare": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Attachement": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -27115,6 +27125,211 @@ cultureInfo fr-FR
 			        "minute",
 			        "min"
 			      ]
+			    },
+			    "auth.average_reactivity": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "auth",
+			          "ConceptualProperty": "Average Reactivity"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "average reactivity": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "reactivity": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ]
+			    },
+			    "auth.avg_duration": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "auth",
+			          "ConceptualProperty": "Avg Duration (min)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "avg duration": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "avg duration (min)": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "average duration (min)": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "avg duration ( minimum )": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "average duration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "avg length": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "avg extent": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "avg interval": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "avg period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "avg spell": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ],
+			      "Units": [
+			        "minute",
+			        "min"
+			      ]
+			    },
+			    "auth.mesure": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "auth",
+			          "ConceptualProperty": "Mesure"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mesure": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "intervention.avg_réactivité": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "intervention",
+			          "ConceptualProperty": "Avg Réactivité"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "avg réactivité": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "average réactivité": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "intervention.high_reactivity_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "intervention",
+			          "ConceptualProperty": "High Reactivity %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "high reactivity %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "high reactivity percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "high reactivity pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
@@ -31954,6 +32169,171 @@ cultureInfo fr-FR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "auths_have_bugs"
+			        }
+			      ]
+			    },
+			    "intervention_has_high_reactivity_": {
+			      "Binding": {
+			        "ConceptualEntity": "intervention"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "intervention": {
+			          "Target": {
+			            "Entity": "intervention"
+			          }
+			        },
+			        "intervention.high_reactivity_": {
+			          "Target": {
+			            "Entity": "intervention.high_reactivity_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "intervention"
+			            },
+			            "Object": {
+			              "Role": "intervention.high_reactivity_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "interventions_have_high_reactivity_"
+			        }
+			      ]
+			    },
+			    "intervention_has_avg_réactivité": {
+			      "Binding": {
+			        "ConceptualEntity": "intervention"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "intervention": {
+			          "Target": {
+			            "Entity": "intervention"
+			          }
+			        },
+			        "intervention.avg_réactivité": {
+			          "Target": {
+			            "Entity": "intervention.avg_réactivité"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "intervention"
+			            },
+			            "Object": {
+			              "Role": "intervention.avg_réactivité"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "interventions_have_avg_réactivité"
+			        }
+			      ]
+			    },
+			    "auth_has_mesure": {
+			      "Binding": {
+			        "ConceptualEntity": "auth"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "auth": {
+			          "Target": {
+			            "Entity": "auth"
+			          }
+			        },
+			        "auth.mesure": {
+			          "Target": {
+			            "Entity": "auth.mesure"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "auth"
+			            },
+			            "Object": {
+			              "Role": "auth.mesure"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "auths_have_mesure"
+			        }
+			      ]
+			    },
+			    "intervention_has_auth_avg_duration": {
+			      "Binding": {
+			        "ConceptualEntity": "intervention"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "intervention": {
+			          "Target": {
+			            "Entity": "intervention"
+			          }
+			        },
+			        "auth.avg_duration": {
+			          "Target": {
+			            "Entity": "auth.avg_duration"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "intervention"
+			            },
+			            "Object": {
+			              "Role": "auth.avg_duration"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "interventions_have_avg_duration"
+			        }
+			      ]
+			    },
+			    "intervention_has_auth_average_reactivity": {
+			      "Binding": {
+			        "ConceptualEntity": "intervention"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "intervention": {
+			          "Target": {
+			            "Entity": "intervention"
+			          }
+			        },
+			        "auth.average_reactivity": {
+			          "Target": {
+			            "Entity": "auth.average_reactivity"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "intervention"
+			            },
+			            "Object": {
+			              "Role": "auth.average_reactivity"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "interventions_have_average_reactivity"
 			        }
 			      ]
 			    },

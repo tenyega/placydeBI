@@ -1,0 +1,318 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "f3a49f104cd47079e052",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 1000,
+    "height": 690.15576701618272,
+    "width": 1262.3892357112552,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "iconMapProE938B1CED4834168A55864E1F8E7242E",
+    "query": {
+      "queryState": {
+        "Latitude": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "list_attachement"
+                        }
+                      },
+                      "Property": "Latitude"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(list_attachement.Latitude)",
+              "nativeQueryRef": "Moyenne de Latitude"
+            }
+          ]
+        },
+        "Longitude": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "list_attachement"
+                        }
+                      },
+                      "Property": "Longitude"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(list_attachement.Longitude)",
+              "nativeQueryRef": "Moyenne de Longitude"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "list_attachement"
+                    }
+                  },
+                  "Property": "Nb_Incidents"
+                }
+              },
+              "queryRef": "list_attachement.Nb_Incidents",
+              "nativeQueryRef": "Nb_Incidents"
+            }
+          ]
+        },
+        "ClusterGroup": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "list_attachement"
+                        }
+                      },
+                      "Property": "gare"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(list_attachement.gare)",
+              "nativeQueryRef": "Premier gare"
+            }
+          ]
+        },
+        "category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "list_attachement"
+                    }
+                  },
+                  "Property": "id"
+                }
+              },
+              "queryRef": "list_attachement.id",
+              "nativeQueryRef": "id",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "list_attachement"
+                      }
+                    },
+                    "Property": "Longitude"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "iconMapProVersion": [
+        {
+          "properties": {
+            "apikey": {
+              "expr": {
+                "Literal": {
+                  "Value": "'c9b157f1-b54b-49fa-b4fb-461341e00a52'"
+                }
+              }
+            },
+            "optOutTracking": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "optInDetailedTracking": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "customerReference": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            },
+            "instanceID": {
+              "expr": {
+                "Literal": {
+                  "Value": "'4a70aff6-1228-be2b-2627-8fd0c209216e'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "toggleButtons": [
+        {
+          "properties": {
+            "showIconLibrary": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showIconLibraryGeoJSONReference1": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showIconLibraryGeoJSONReference2": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showIconLibraryGeoJSONReference3": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showIconLibraryGeoJSONReference4": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showIconLibraryGeoJSONReference5": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showIconLibraryWKTPoint": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showPatternLibraryWKT": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showPatternLibraryGeoJSONData1": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showPatternLibraryGeoJSONData2": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showPatternLibraryGeoJSONData3": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showPatternLibraryGeoJSONData4": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showPatternLibraryGeoJSONData5": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showDataDebug": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualTooltip": [
+        {
+          "properties": {
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'97330df505fea7048123'"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Canvas'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

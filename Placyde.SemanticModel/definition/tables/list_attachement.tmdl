@@ -1,6 +1,10 @@
 table list_attachement
 	lineageTag: 0e8f09f7-6e96-4cf5-a155-c872b1312c77
 
+	measure Nb_Incidents = COUNTROWS(intervention)
+		formatString: 0
+		lineageTag: 26f73af6-03ed-4a16-9208-d1073a0f4351
+
 	column id
 		dataType: int64
 		formatString: 0
@@ -64,6 +68,63 @@ table list_attachement
 		sourceColumn: utilise_vhl
 
 		annotation SummarizationSetBy = Automatic
+
+	column Latitude =
+			
+			SWITCH(TRUE(),
+			    list_attachement[gare] = "Châtelet-les Halles",        48.8597,
+			    list_attachement[gare] = "Gare de l'Est",               48.8765,
+			    list_attachement[gare] = "La Défense",                  48.8918,
+			    list_attachement[gare] = "Montparnasse",                48.8421,
+			    list_attachement[gare] = "Nation",                 48.8484,
+			    list_attachement[gare] = "SNCF Gare de Lyon",           48.8448,
+			    list_attachement[gare] = "SNCF Gare du Nord",           48.8809,
+			    list_attachement[gare] = "SNCF Montparnasse",           48.8421,
+			    list_attachement[gare] = "SNCF Chessy Marne-la-Vallée", 48.8637,
+			    list_attachement[gare] = "SNCF Saint Lazare",                48.8757,
+			    list_attachement[gare] = "Denfert Rochereau",           48.8335,
+			    list_attachement[gare] = "Massy Palaiseau",             48.7253,
+			    list_attachement[gare] = "Noisy le Grand Mont dEst",    48.8403,
+			    list_attachement[gare] = "République",             48.8675,
+			    list_attachement[gare] = "Nation",                      48.8484,
+			    list_attachement[gare] = "Stade de France",             48.9244,
+			    list_attachement[gare] = "Non rattachée",               BLANK(),
+			    BLANK()
+			)
+		lineageTag: 5cd713df-596a-4b5a-8ef9-04cc3e0a6eaa
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longitude =
+			
+			SWITCH(TRUE(),
+			    list_attachement[gare] = "Châtelet-les Halles",         2.3477,
+			    list_attachement[gare] = "Gare de l'Est",               2.3589,
+			    list_attachement[gare] = "La Défense",                  2.2387,
+			    list_attachement[gare] = "Montparnasse",                2.3219,
+			    list_attachement[gare] = "Nation",                      2.3961,
+			    list_attachement[gare] = "SNCF Gare de Lyon",           2.3733,
+			    list_attachement[gare] = "SNCF Gare du Nord",           2.3553,
+			    list_attachement[gare] = "SNCF Montparnasse",           2.3219,
+			    list_attachement[gare] = "SNCF Chessy Marne-la-Vallée", 2.7783,
+			    list_attachement[gare] = "SNCF Saint Lazare",           2.3249,
+			    list_attachement[gare] = "Denfert Rochereau",           2.3325,
+			    list_attachement[gare] = "Massy Palaiseau",             2.2564,
+			    list_attachement[gare] = "Noisy le Grand Mont dEst",    2.5536,
+			    list_attachement[gare] = "République",                  2.3625,
+			    list_attachement[gare] = "Stade de France",             2.3601,
+			    list_attachement[gare] = "Non rattachée",               BLANK(),
+			    BLANK()
+			)
+		lineageTag: 98fa4abf-3aa8-4422-94d9-86065508cea2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition list_attachement = m
 		mode: import

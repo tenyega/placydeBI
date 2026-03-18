@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "1690ece7c761d15a8343",
+  "position": {
+    "x": 0,
+    "y": 18,
+    "z": 0,
+    "height": 70,
+    "width": 320,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "advanceCardE03760C5AB684758B56AA29F9E6C257B",
+    "query": {
+      "queryState": {
+        "mainMeasure": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "list_attachement"
+                        }
+                      },
+                      "Property": "gare"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(list_attachement.gare)",
+              "nativeQueryRef": "Premier gare"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -9,6 +9,15 @@
         "page": "2.3.0"
       },
       "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Custom5559313120558272.json",
+      "reportVersionAtImport": {
+        "visual": "2.7.0",
+        "report": "3.2.0",
+        "page": "2.3.1"
+      },
+      "type": "RegisteredResources"
     }
   },
   "objects": {
@@ -42,7 +51,9 @@
   "publicCustomVisuals": [
     "RadarChart1446119667547",
     "chartexposankeydiagramD70B8BC1836C4420A7BFCE36F48EE4BE",
-    "advanceCardE03760C5AB684758B56AA29F9E6C257B"
+    "advanceCardE03760C5AB684758B56AA29F9E6C257B",
+    "carteperso6072D0091B54475C86AD0C3BF419D312",
+    "iconMapProE938B1CED4834168A55864E1F8E7242E"
   ],
   "resourcePackages": [
     {
@@ -53,6 +64,17 @@
           "name": "CY26SU02",
           "path": "BaseThemes/CY26SU02.json",
           "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Custom5559313120558272.json",
+          "path": "Custom5559313120558272.json",
+          "type": "CustomTheme"
         }
       ]
     }

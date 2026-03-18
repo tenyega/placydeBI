@@ -1,0 +1,32 @@
+{
+  "name": "Custom",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "visualTooltip": [
+          {
+            "themedTitleFontColor": {
+              "solid": {
+                "color": "#5050DF"
+              }
+            },
+            "themedValueFontColor": {
+              "solid": {
+                "color": "#FBFAF8"
+              }
+            }
+          }
+        ],
+        "visualHeaderTooltip": [
+          {
+            "themedTitleFontColor": {
+              "solid": {
+                "color": "#5050DF"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

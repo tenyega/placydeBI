@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "15c55a7f611fe3a5b437",
+  "position": {
+    "x": 50.136135657989016,
+    "y": 74.592787198471456,
+    "z": 0,
+    "height": 372.96393599235728,
+    "width": 716.57989013613565,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "list_attachement"
+                    }
+                  },
+                  "Property": "gare"
+                }
+              },
+              "queryRef": "list_attachement.gare",
+              "nativeQueryRef": "Attachement",
+              "active": true,
+              "displayName": "Attachement"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "intervention"
+                        }
+                      },
+                      "Property": "id"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(intervention.id)",
+              "nativeQueryRef": "Nombre d'intervention",
+              "displayName": "Nombre d'intervention"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "intervention"
+                      }
+                    },
+                    "Property": "id"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
